@@ -1,0 +1,80 @@
+{
+	"collectionName": "OOPCheatsheet",
+	"groups": [
+		{
+			"title": "Basics",
+			"docs": [
+				{
+					"title": "Object",
+					"code": "",
+					"description": "Objects are instances of a class, with their own set of attributes and methods.",,
+					"longDescription": "<p>In object-oriented programming, an <em>object</em> is an instance of a <em>class</em>, with its own set of <em>attributes</em> and <em>methods</em>. A <em>class</em> is a blueprint for creating objects that defines their attributes and behavior. When an object is created, a special method called a <em>constructor</em> is called to initialize its attributes.</p>",
+					"image": null
+				},
+				{
+					"title": "Class",
+					"code": "",
+					"description": "Classes are blueprints for creating objects that have attributes and methods.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Abstraction",
+					"code": "",
+					"description": "Abstraction is presenting complex data and functionality in a simplified and easy-to-understand way.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Encapsulation",
+					"code": "",
+					"description": "Object data hidden, accessible only through designated methods, for better control and protection.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Inheritance",
+					"code": "",
+					"description": "Classes can inherit attributes and methods from a parent class.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Polymorphism",
+					"code": "",
+					"description": "Multiple objects can have the same method name but different implementation.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Constructor",
+					"code": "",
+					"description": "A special method that is called when an object is created.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Constructor",
+					"code": "",
+					"description": "A function that belongs to an object.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Attribute",
+					"code": "",
+					"description": "A variable that belongs to an object.",,
+					"longDescription": "",
+					"image": null
+				},
+				{
+					"title": "Attribute",
+					"code": "",
+					"description": "A set of methods that define how objects of a class can be used.",,
+					"longDescription": "",
+					"image": null
+				}
+			]
+		}
+	]
+}

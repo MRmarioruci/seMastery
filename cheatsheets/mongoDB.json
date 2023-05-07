@@ -1,0 +1,55 @@
+{
+	"collectionName": "mongoDBCheatsheet",
+	"groups": [
+		{
+			"title": "General",
+			"docs": [
+				{ 
+					"code": "show dbs",
+					"description": "List all available databases"
+				},
+				{
+					"code": "use db",
+					"description": "Use the specified database for quering"
+				},
+				{
+					"code": "show collections",
+					"description": "Lists all given collections within a database"
+				},
+				{
+					"code": "db.dropDatabase()",
+					"description": "Deletes a database"
+				},
+				{
+					"code": "exit",
+					"description": "Exit from the cli if you are using it"
+				}
+			]
+		},
+		{
+			"title": "Quering",
+			"docs": [
+				{ 
+					"code": "db.users.insertOne({name: 'John')",
+					"description": "Insert a document"
+				},
+				{
+					"code": "db.users.insertMany([ {name: 'John'}, {name: 'Mike'} ])",
+					"description": "Insert multiple documents"
+				},
+				{
+					"code": "db.users.find()",
+					"description": "Retrieve all the documents of the collection"
+				},
+				{
+					"code": "db.users.find().limit(2)",
+					"description": "Limit the results"
+				},
+				{
+					"code": "db.users.find().skip(1).limit(2)",
+					"description": "Exit from the cli if you are using it"
+				}
+			]
+		}
+	]
+}

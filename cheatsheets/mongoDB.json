@@ -1,10 +1,8 @@
 {
 	"collectionName": "mongoDBCheatsheet",
-	"groups": [
-		{
-			"title": "General",
-			"docs": [
-				{ 
+	"groups": [{
+		"title": "General",
+		"docs": [{ 
 					"code": "show dbs",
 					"description": "List all available databases"
 				},
@@ -28,8 +26,7 @@
 		},
 		{
 			"title": "Quering",
-			"docs": [
-				{ 
+			"docs": [{ 
 					"code": "db.users.insertOne({name: 'John')",
 					"description": "Insert a document"
 				},
@@ -48,6 +45,213 @@
 				{
 					"code": "db.users.find().skip(1).limit(2)",
 					"description": "Exit from the cli if you are using it"
+				},
+				{
+					"code": "db.users.find().sort({name: 1}).limit(2)",
+					"description": "Sort the documents in ascending order by name and limit the number of documents returned by the query to 2"
+				},
+				{
+					"code": "db.users.find().sort({age:1, name: 1}).limit(2)",
+					"description": "Sort the documents in ascending order by age and then by name and limit the number of documents returned by the query to 2"
+				},
+				{
+					"code": "db.users.find({name: 'John'})",
+					"description": "Retrieve all the documents that have a name field equal to 'John'"
+				},
+				{
+					"code": "db.users.find({name: 'John'}, {name: 1, _id: 0})",
+					"description": "Retrieve all the documents that have a name field equal to 'John', but only include the name field in the results"
+				},
+				{
+					"code": "db.users.find({name: {$eq: 'Sally'}})",
+					"description": "Retrieve all the documents that have a name field equal to 'Sally'"
+				},
+				{
+					"code": "db.users.find({name: {$ne: 'Sally'}})",
+					"description": "Retrieve all the documents that have a name field not equal to 'Sally'"
+				},
+				{
+					"code": "db.users.find({age: {$gte: 19}})",
+					"description": "Retrieve all the documents that have an age field greater than or equal to 19"
+				},
+				{
+					"code": "db.users.find({age: {$gt: 19}})",
+					"description": "Retrieve all the documents that have an age field greater than 19"
+				},
+				{
+					"code": "db.users.find({age: {$lte: 19}})",
+					"description": "Retrieve all the documents that have an age field less than or equal to 19"
+				},
+				{
+					"code": "db.users.find({age: {$gte: 19, $lte: 30}})",
+					"description": "Retrieve all the documents that have an age field greater than or equal to 19 and less than or equal to 30"
+				},
+				{
+					"code": "db.users.find({age: {$in: ['Kyle', 'Dora']}})",
+					"description": "Retrieve all the documents that have an age field equal to 'Kyle' or 'Dora'"
+				},
+				{
+					"code": "db.users.find({age: {$nin: ['Kyle', 'Dora']}})",
+					"description": "Retrieve all the documents that have an age field not equal to 'Kyle' or 'Dora'"
+				},
+				{
+					"code": "db.users.find({age: {$exists: true}})",
+					"description": "Retrieve all the documents that have an age field"
+				},
+				{
+					"code": "db.users.find().sort({name: 1}).limit(2)",
+					"description": "Sort the documents by name and retrieve only the first two"
+				},
+				{
+					"code": "db.users.find().sort({age: 1, name: 1}).limit(2)",
+					"description": "Sort the documents first by age, then by name and retrieve only the first two"
+				},
+				{
+					"code": "db.users.find({name: 'John'})",
+					"description": "Retrieve all documents where name is 'John'"
+				},
+				{
+					"code": "db.users.find({name: 'John'}, {name: 1, _id: 0})",
+					"description": "Retrieve only the 'name' field from documents where name is 'John'"
+				},
+				{
+					"code": "db.users.find({name: {$eq: 'Sally'}})",
+					"description": "Retrieve all documents where name is equal to 'Sally'"
+				},
+				{
+					"code": "db.users.find({name: {$ne: 'Sally'}})",
+					"description": "Retrieve all documents where name is not equal to 'Sally'"
+				},
+				{
+					"code": "db.users.find({age: {$gte: 19}})",
+					"description": "Retrieve all documents where age is greater than or equal to 19"
+				},
+				{
+					"code": "db.users.find({age: {$gt: 19}})",
+					"description": "Retrieve all documents where age is greater than 19"
+				},
+				{
+					"code": "db.users.find({age: {$lte: 19}})",
+					"description": "Retrieve all documents where age is less than or equal to 19"
+				},
+				{
+					"code": "db.users.find({age: {$gte: 19, $lte: 30}})",
+					"description": "Retrieve all documents where age is between 19 and 30, inclusive"
+				},
+				{
+					"code": "db.users.find({age: {$in: ['Kyle', 'Dora']}})",
+					"description": "Retrieve all documents where age is either 'Kyle' or 'Dora'"
+				},
+				{
+					"code": "db.users.find({age: {$nin: ['Kyle', 'Dora']}})",
+					"description": "Retrieve all documents where age is neither 'Kyle' nor 'Dora'"
+				},
+				{
+					"code": "db.users.find({age: {$exists: true}})",
+					"description": "Retrieve all documents where age field exists"
+				},
+				{
+					"code": "db.users.find({$and: [{name: 'Kyle'}, {age: 20}]})",
+					"description": "Retrieve all documents where name is 'Kyle' and age is 20"
+				},
+				{
+					"code": "db.users.find({$or: [{age: {$gte: 20}}, {name: 'Kyle'}]})",
+					"description": "Retrieve all documents where age is greater than or equal to 20, or name is 'Kyle'"
+				},
+				{
+					"code": "db.users.find({$expr: { $gt: [\"debt\", \"balance\"]}})",
+					"description": "Retrieve all documents where debt is greater than balance"
+				},
+				{
+					"code": "db.users.find({\"address.street\": \"123 Main str\"})",
+					"description": "Retrieve all documents where address.street is '123 Main str'"
+				},
+				{
+					"code": "db.users.findOne({age: { $lte: 40}})",
+					"description": "Retrieve one document where age is less than or equal to 40"
+				},
+				{
+					"code": "db.users.countDocuments({age: { $lte: 40}})",
+					"description": "Count all documents where age is less than or equal to 40"
+				}
+			]
+		},
+		{
+			"title": "Update",
+			"docs": [
+				{
+					"code": "db.users.updateOne({age: 26}, { $set: {age: 27}})",
+					"description": "Set the age of the first document with age of 26 to 27"
+				},
+				{
+					"code": "db.users.updateOne({_id: 123}, { $inc: {age: 3}})",
+					"description": "Increment the age of the document with _id of 123 by 3"
+				},
+				{
+					"code": "db.users.updateOne({_id: 123}, { $rename: {name: \"firstName\"}})",
+					"description": "Rename the 'name' field to 'firstName' in the document with _id of 123"
+				},
+				{
+					"code": "db.users.updateOne({_id: 123}, { $unset: \"age\"})",
+					"description": "Remove the 'age' field from the document with _id of 123"
+				},
+				{
+					"code": "db.users.updateOne({_id: 123}, { $unset: {age: \"\"}})",
+					"description": "Set the 'age' field value to null in the document with _id of 123"
+				},
+				{
+					"code": "db.users.updateOne({_id: 123}, { $push: {hobbies: \"Swimming\"}})",
+					"description": "Push 'Swimming' to the 'hobbies' array in the document with _id of 123"
+				},
+				{
+					"code": "db.users.updateOne({_id: 123}, { $pull: {hobbies: \"Swimming\"}})",
+					"description": "Remove 'Swimming' from the 'hobbies' array in the document with _id of 123"
+				},
+				{
+					"code": "db.users.updateMany({address: {$exists: true}}, {$unset: { address: \"\"}})",
+					"description": "Remove the 'address' field from all documents where 'address' exists"
+				},
+				{
+					"code": "db.users.replaceOne({_id: 123}, {name: \"John\"})",
+					"description": "Replace the document with _id of 123 with a new document containing only the 'name' field set to 'John'"
+				}
+			]
+		},
+		{
+			"title": "Delete",
+			"docs": [
+				{
+					"code": "db.users.deleteOne({name: \"John\"})",
+					"description": "Delete the first document where name is 'John'"
+				},
+				{
+					"code": "db.users.deleteMany({age: { $exists: false }})",
+					"description": "Delete all documents where age does not exist"
+				}
+			]
+		},
+		{
+			"title": "Interview specific",
+			"docs": [
+				{
+					"code": "What is MongoDB?",
+					"description": "MongoDB is a NoSQL document-oriented database that allows you to store and retrieve data using a flexible document model."
+				},
+				{
+					"code": "What is a document in MongoDB?",
+					"description": "A document in MongoDB is a data record composed of fields and values, similar to a row in a relational database table."
+				},
+				{
+					"code": "What is a collection in MongoDB?",
+					"description": "A collection in MongoDB is a group of documents that are stored together in a MongoDB database."
+				},
+				{
+					"code": "What is sharding in MongoDB?",
+					"description": "Sharding is the process of distributing data across multiple servers or nodes in a MongoDB cluster to improve scalability and performance."
+				},
+				{
+					"code": "What is indexing in MongoDB?",
+					"description": "Indexing in MongoDB is the process of creating indexes to improve query performance and speed up data retrieval."
 				}
 			]
 		}

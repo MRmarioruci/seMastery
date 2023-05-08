@@ -1,0 +1,92 @@
+{
+	"collectionName": "reduxCheatsheet",
+	"groups": [
+		{
+			"title": "Term specific",
+			"docs": [
+				{
+					"title": "Store",
+					"code": "",
+					"description": "Holds the application's state"
+				},
+				{
+					"title": "Action",
+					"code": "",
+					"description": "Describes a change in state"
+				},
+				{
+					"title": "Reducer",
+					"code": "",
+					"description": "A pure function that calculates the next state based on the current state and an action"
+				},
+				{
+					"title": "Dispatch",
+					"code": "",
+					"description": "The only way to trigger a state change"
+				},
+				{
+					"title": "Middleware",
+					"code": "",
+					"description": "Functions that intercept and process actions before they reach the reducers"
+				},
+				{
+					"title": "Selector",
+					"code": "",
+					"description": "A function that extracts specific data from the store state"
+				},
+				{
+					"title": "Action Creator",
+					"code": "",
+					"description": "A function that returns an action object"
+				},
+				{
+					"title": "Async Action",
+					"code": "",
+					"description": "An action that involves an asynchronous operation, such as fetching data from an API"
+				},
+				{
+					"title": "Immutable State",
+					"code": "",
+					"description": "The state should be treated as immutable to ensure predictable behavior and performance"
+				}
+			]
+		},
+		{
+			"title": "Interview specific",
+			"docs": [
+				{
+					"title": "What is the purpose of Redux?",
+					"description": "A predictable state container for managing complex state in JavaScript apps."
+				},
+				{
+					"title": "What are the three principles of Redux?",
+					"description": "Single source of truth, state is read-only, changes are made with pure functions."
+				},
+				{
+					"title": "What is a reducer in Redux?",
+					"description": "A pure function that takes the current state and an action, and returns a new state."
+				},
+				{
+					"title": "What is the difference between an action and a reducer in Redux?",
+					"description": "An action is an object describing a change, a reducer handles the change."
+				},
+				{
+					"title": "What is the role of the store in Redux?",
+					"description": "A container that holds the state tree of your application."
+				},
+				{
+					"title": "What are middleware in Redux?",
+					"description": "Functions that intercept actions before they reach the reducer."
+				},
+				{
+					"title": "What is the difference between synchronous and asynchronous actions in Redux?",
+					"description": "Synchronous actions are executed immediately, async actions may take time."
+				},
+				{
+					"title": "How would you implement asynchronous actions in a Redux application?",
+					"description": "Use middleware like redux-thunk or redux-saga to handle async actions."
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,253 @@
+{
+	"collectionName": "leetcodeCheatsheet",
+	"groups": [
+		{
+			"title": "Arrays & Hashing",
+			"docs": [
+				{
+					"title": "Contains Duplicate",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags" : []
+				}
+			]
+		},
+		{
+			"title": "Two Pointers",
+			"docs": [
+				{
+					"title": "Valid Palindrome",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Sliding Window",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Binary Search",
+			"docs": [
+				{
+					"title": "704. Binary Search",
+					"difficulty": "easy",
+					"link": "https://leetcode.com/problems/binary-search/",
+					"explanation": "<ol> <li>Define the search interval using two pointers, <code>left</code> and <code>right</code>, initialized to the first and last indices of the array, respectively.</li> <li>Repeat the following steps while the interval is not empty: <ul> <li>Compute the middle index <code>mid</code> as the average of <code>left</code> and <code>right</code>.</li> <li>If <code>nums[mid]</code> equals the target value, return <code>mid</code>.</li> <li>If <code>nums[mid]</code> is less than the target value, set <code>left</code> to <code>mid + 1</code>.</li> <li>If <code>nums[mid]</code> is greater than the target value, set <code>right</code> to <code>mid - 1</code>.</li> </ul> </li> <li>If the target value is not found after the while loop, return <code>-1</code>.</li> </ol>",
+					"tags": ["mid = (left + right ) // 2"]
+				},
+				{
+					"title": "35. Search Insert Position",
+					"difficulty": "easy",
+					"link": "https://leetcode.com/problems/search-insert-position/",
+					"explanation": "<ol> <li>Set <code>left</code> to <code>0</code> and <code>right</code> to the length of the input array <code>nums</code> minus one.</li> <li>Repeat the following steps while <code>left &lt;= right</code>: <ul> <li>Compute the middle index <code>mid</code> as the average of <code>left</code> and <code>right</code>.</li> <li>If <code>nums[mid] == target</code>, return <code>mid</code>.</li> <li>If <code>nums[mid] &lt; target</code>, update <code>left = mid + 1</code>.</li> <li>If <code>nums[mid] &gt; target</code>, update <code>right = mid - 1</code>.</li> </ul> </li> <li>If the target is not found, return the value of <code>left</code>, which will be the index where the target should be inserted.</li> </ol>",
+					"tags": ["mid = (left + right ) // 2", "Keep last left value"]
+				},
+				{
+					"title": "374. Guess Number Higher or Lower",
+					"difficulty": "easy",
+					"link": "https://leetcode.com/problems/guess-number-higher-or-lower/",
+					"explanation": "<ol> <li>Set <code>left</code> to <code>1</code> and <code>right</code> to <code>n</code>.</li> <li>Repeat the following steps while <code>left &lt;= right</code>: <ul> <li>Compute the middle number <code>mid</code> as the average of <code>left</code> and <code>right</code>.</li> <li>Invoke the <code>guess</code> API function with <code>mid</code> as the argument.</li> <li>If <code>guess(mid) == 0</code>, return <code>mid</code>, as this means that <code>mid</code> is the correct guess.</li> <li>If <code>guess(mid) == 1</code>, update <code>left = mid + 1</code>, as this means that the correct guess is higher than <code>mid</code>.</li> <li>If <code>guess(mid) == -1</code>, update <code>right = mid - 1</code>, as this means that the correct guess is lower than <code>mid</code>.</li> </ul> </li> <li>If no number is guessed correctly, return <code>-1</code>.</li> </ol>",
+					"tags": ["mid = (left + right ) // 2"]
+				},
+				{
+					"title": "441. Arranging Coins",
+					"difficulty": "easy",
+					"link": "https://leetcode.com/problems/arranging-coins/",
+					"explanation": "<ol> <li>Initialize two pointers, <code>left = 0</code> and <code>right = n</code>.</li> <li>Repeat the following steps while <code>left &lt;= right</code>: <ul> <li>Compute the middle row <code>mid</code> as the average of <code>left</code> and <code>right</code>, rounded down to the nearest integer.</li> <li>Compute the number of coins required to fill the first <code>mid</code> rows using the formula <code>mid * (mid + 1) / 2</code>.</li> <li>If the number of coins required is equal to <code>n</code>, return <code>mid</code>, as this means that <code>mid</code> is the maximum number of rows that can be completely filled.</li> <li>If the number of coins required is less than <code>n</code>, update <code>left = mid + 1</code>, as this means that <code>mid</code> is too small to completely fill all the rows.</li> <li>If the number of coins required is greater than <code>n</code>, update <code>right = mid - 1</code>, as this means that <code>mid</code> is too large to completely fill all the rows.</li> </ul> </li> <li>If no number of completely filled rows is found, return <code>right</code>, which will be the maximum number of rows that can be completely filled.</li> </ol>",
+					"tags": [
+						"mid = (left + right ) // 2",
+						"coins = (mid * (mid + 1)) // 2"
+					]
+				},
+				{
+					"title": "977. Squares of a Sorted Array",
+					"difficulty": "easy",
+					"link": "https://leetcode.com/problems/squares-of-a-sorted-array/",
+					"explanation": "<ol> <li>Initialize two pointers, <code>left = 0</code> and <code>right = n - 1</code>, where <code>n</code> is the length of the input array.</li> <li>Create an output array of length <code>n</code>, called <code>result</code>.</li> <li>Repeat the following steps while <code>left &lt;= right</code>: <ul> <li>If the absolute value of the number at <code>left</code> is greater than or equal to the absolute value of the number at <code>right</code>, square the number at <code>left</code> and add it to the <code>result</code> array at index <code>right - left</code>, then increment <code>left</code>.</li> <li>Otherwise, square the number at <code>right</code> and add it to the <code>result</code> array at index <code>right - left</code>, then decrement <code>right</code>.</li> </ul> </li> <li>Return the <code>result</code> array.</li> </ol>",
+					"tags": [
+						"ans = [0 for _ in nums]",
+						"sqA = abs(nums[l] * nums[l])"
+					]
+				},
+				{
+					"title": "367. Valid Perfect Square",
+					"difficulty": "easy",
+					"link": "https://leetcode.com/problems/valid-perfect-square/",
+					"explanation": "<ol> <li>Initialize two pointers, <code>left = 1</code> and <code>right = num</code>, where <code>num</code> is the input number.</li> <li>Repeat the following steps while <code>left &lt;= right</code>: <ul> <li>Compute the middle number <code>mid</code> as the average of <code>left</code> and <code>right</code>, rounded down to the nearest integer.</li> <li>Compute the square of <code>mid</code>.</li> <li>If the square is equal to <code>num</code>, return <code>True</code>, as this means that <code>mid</code> is the square root of <code>num</code>.</li> <li>If the square is less than <code>num</code>, update <code>left = mid + 1</code>, as this means that <code>mid</code> is too small to be the square root of <code>num</code>.</li> <li>If the square is greater than <code>num</code>, update <code>right = mid - 1</code>, as this means that <code>mid</code> is too large to be the square root of <code>num</code>.</li> </ul> </li> <li>If no square root is found, return <code>False</code>.</li> </ol>",
+					"tags": [
+						"mid = (left + right ) // 2",
+						"x = mid * mid"
+					]
+				}
+			]
+		},
+		{
+			"title": "Linked List",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Trees",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Tries",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Heap / Priority Queue",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Backtracking",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Graphs",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Advanced Graphs",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "1-D Dynamic Programming",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "2-D Dynamic Programming",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Greedy",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Intervals",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Math & Geometry",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		},
+		{
+			"title": "Bit Manipulation",
+			"docs": [
+				{
+					"title": "",
+					"difficulty": "easy",
+					"link": "",
+					"explanation": "",
+					"tags": []
+				}
+			]
+		}
+	]
+}

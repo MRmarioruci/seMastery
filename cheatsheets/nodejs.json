@@ -1,0 +1,62 @@
+{
+	"collectionName": "nodejsCheatsheet",
+	"groups": [
+		{
+			"title": "Basics",
+			"docs": [
+				{
+					"title": "Why Node.js?",
+					"description": "1. Non Blocking, 2. Single threaded event loop, 3. Event-driven servers, 4. Excellent support for REST-GRAPHQL, 5, Build in suppor for Promises"
+				},
+				{
+					"title": " What Is npm?",
+					"description": "Node.js package ecosystem"
+				},
+				{
+					"title": "Benefits",
+					"description": "Fast, Scalable, Asynchronous, Open Source, No Buffering, Tooling."
+				},
+				{
+					"title": "Prototype Inheritance",
+					"description": "Fast, Scalable, Asynchronous, Open Source, No Buffering, Tooling."
+				},
+				{
+					"title": "Streams",
+					"description": "Powerfull feature that allows data processing in chunks of data rather loading all the data into memory at once."
+				},
+				{
+					"title": "Streams",
+					"description": "Powerfull feature that allows data processing in chunks of data rather loading all the data into memory at once., Writable, Readable, Duplex, Transform."
+				},
+				{
+					"title": "module.exports",
+					"description": "Specifies what the module objects will be exported to importers"
+				},
+				{
+					"title": "How do you obtain the variables and property values passed through URL (GET method)?",
+					"description": ""
+				},
+				{
+					"title": "Middleware",
+					"description": "Functions that can access the request, response, next objects in the applications request-response lifecycle."
+				},
+				{
+					"title": "EventEmitter",
+					"description": "A class that provides a mechanism for publishing and subscribing to it's events. Example of group chat."
+				},
+				{
+					"title": "package.json",
+					"description": "Project metadata file, Dependencies, configuration options and other relevant information."
+				},
+				{
+					"title": "setTimeout",
+					"description": "A timer that executes a callback after the timer has expired"
+				},
+				{
+					"title": "process.nextTick()",
+					"description": "Executes a callback function on the current event loop iteration, after the current operation ends."
+				}
+			]
+		}
+	]
+}

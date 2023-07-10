@@ -1,0 +1,35 @@
+{
+	"collectionName": "angularCheatsheet",
+	"groups": [
+		{
+			"title": "Basics",
+			"docs": [
+				{
+					"title": "What is Angular?",
+					"description": "A framework used to build frontend web applications, with asychronous refreshing of parts of the page without reload."
+				},
+				{
+					"title": "Pros & Cons",
+					"description": "Pros: Modular approach, re-usable code, lot's of built in capabilities (Routing, validations), unit testable. Cons: ~"
+				},
+				{
+					"title": "Angular CLI",
+					"description": "Command Line Interface to interact with angular commands"
+				},
+				{
+					"title": "Modules",
+					"description": ""
+				}
+			]
+		},
+		{
+			"title": "Async programming",
+			"docs": [
+				{
+					"title": "Callback function",
+					"description": "A function that is passed as an argument to another function and is called after an opertation has completed."
+				}
+			]
+		}
+	]
+}

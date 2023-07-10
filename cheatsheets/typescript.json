@@ -1,0 +1,168 @@
+{
+	"collectionName": "typescriptCheatsheet",
+	"groups": [
+		{
+			"title": "Basics",
+			"docs": [
+				{
+					"title": "What is typescript",
+					"description": "A superset programming language on top of javascript."
+				},
+				{
+					"title": "Strong typing",
+					"description": "Defining type of a variable. More predictable application behavior & less error prone, easier debugging. OOP. Errors on compilation."
+				},
+				{
+					"title": "Types",
+					"description": "[number, string, boolean, null, undefined, object, any, unknown, never, enum , tuple]"
+				},
+				{
+					"title": "Types",
+					"description": "[number, string, boolean, null, undefined, object, any, unknown, never, enum , tuple]"
+				}
+			]
+		}
+	]
+}
+
+/* 
+let sales: number = 12_3
+let course: string = 'Typescript'
+let is_published: boolean = true;
+
+---- type = any
+	Lose the strong typing feature
+
+--- Arrays
+	let numbers: numbers[] = [1, 2, 3]
+	let numbers = []; -> any
+
+--- Tuples
+	let user: [number, string] = [1. 'Mario']
+	Restrict typles to max 2 values
+
+--- Enum
+	List of related constants
+	enum Size { Small = 1, Medium, Large};
+	enum Size { Small = 's', Medium = 'm', Large = 'l'};
+	const mySize: Size = Size.Medium;
+	const enum Size { Small = 1, Medium, Large};
+
+--- Functions
+	function calculateTax(income: number){
+		Inferred type : number
+		return 0;
+	}
+	function calculateTax(income: number): number{
+		return 0;
+	}
+	Optional value
+	function calculateTax(income: number, taxYear?: number): number{
+		return 0;
+	}
+	Default value
+	function calculateTax(income: number, taxYear =  2022): number{
+		return 0;
+	}
+
+--- Objects
+	Optional Property
+	let employee: {
+		id: number, 
+		name?: string
+	} = {id: 1 }
+
+	Always set value 
+	let employee: {
+		id: number, 
+		name: string
+	} = {id: 1, name : 'Mario'}
+	Always make sure the code makes conceptual sense
+
+	Read only modifier -  Dont allow overriding of a parameter
+	let employee: {
+		readonly id: number, 
+		name: string
+	} = {id: 1, name : 'Mario'}
+
+	
+	let employee: {
+		readonly id: number, 
+		name: string,
+		retire: (date: Date) => void
+	} = {id: 1, name : 'Mario', retire: (date: Date) => {
+		console.log(date);
+	}}
+
+---- Type aliases
+	type Employee = {
+		readonly id: number, 
+		name: string,
+		retire: (date: Date) => void
+	}
+	let employee: Employee  = {id: 1, name : 'Mario', retire: (date: Date) => {
+		console.log(date);
+		}
+	}
+
+--- Union types
+	Vertical bar
+	function kgToLbs(weight: number | string): number {
+		Only the properties that are common to both types
+		Narrowing helps with it
+		if(typeof weight === 'number'){
+			return weight * 2.2
+		}else{
+			return parseInt(weight) * 2.2;
+		}
+	}
+
+--- Intersection types
+	type Draggable = {
+		drag: () => void
+	}
+	type Resizable = {
+		resize: () => void
+	}
+	type UIWidget = Draggable & Resizable
+	let textBox: UIWidget = {
+		drag: () => {},
+		resize: () => {}
+	}
+
+--- Literal types
+	type Quantity = 50 || 100;
+	let quantity: Quantity = 100;
+
+--- Nullable types
+	function greet(name: string | null): void	{
+		if(!name) console.log('Hola!')
+		console.log(name.toUpperCase());
+	}
+
+--- Optional chaining
+  customer?.birthday
+
+  let greet: Function;
+
+  <any> -> Ovveride infered type and typecast the value returned
+
+
+  :any -> Explicitly specify type
+
+/* Can infer the type of our variable based on the value */
+
+
+	Classes
+	Objects
+	Interfaces
+	Constructors
+	Access modifiers
+	Field
+	Generic
+
+Angular
+Json serving files */
+
+
+What you've been working on every year component with graphs

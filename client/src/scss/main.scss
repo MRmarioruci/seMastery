@@ -93,12 +93,15 @@ a {
 			margin-right: auto;
 			width: 200px;
 			z-index: 10;
+			backdrop-filter: blur(52px);
+			pointer-events: none;
 		}
 
 		.main__contents-menu{
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
+			margin-top: 20px;
 
 			.main__contents-card {
 				border: none;

@@ -10,7 +10,7 @@ function Main() {
 					<div>
 						<h1><span className="text__primary">S</span>oftware</h1>
 						<h1><span className="text__primary">E</span>ngineering</h1>
-						<h1>Cheatsheets</h1>
+						<h1>Mastery</h1>
 					</div>
 					<div className="mtop--10 font__18 text__bold">
 						Quick answers for technology specific interview questions.
@@ -30,7 +30,10 @@ function Main() {
 				</div>
 			</div>
 			<div className="main__contents">
-				<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Pick from the list</div>
+				<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Cheatsheets</div>
+				<div className="text__center text__muted">
+					Take a peek at our cheatsheets before an interview or just to brush up your knowledge.
+				</div>
 				<div className="main__contents-menu">
 					{menu.map((item, index) => {
 						return (
@@ -39,6 +42,34 @@ function Main() {
 							</a>
 						)
 					})}
+				</div>
+				<div className="text__center">
+					<button className="btn btn__secondary text__normal btn__rounded">
+						<span className="material-icons">
+							add
+						</span>
+						Suggest an addition
+					</button>
+				</div>
+			</div>
+			<div className="main__contents">
+				<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Resources</div>
+				<div className="main__contents-menu">
+					
+				</div>
+				<div className="text__center">
+					<button className="btn btn__secondary text__normal btn__rounded">
+						<span className="material-icons">
+							add
+						</span>
+						Suggest an addition
+					</button>
+				</div>
+			</div>
+			<div className="main__contents">
+				<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Leetcode</div>
+				<div className="main__contents-menu">
+
 				</div>
 				<div className="text__center">
 					<button className="btn btn__secondary text__normal btn__rounded">

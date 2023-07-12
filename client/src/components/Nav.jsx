@@ -23,17 +23,20 @@ function Nav() {
 					<img src={logo} width="50" />
 					<div className="text__bold font__30 mtop--10 logo__text">
 						<b className="text__primary">SE</b>
-						<span className="text__normal">Cheatsheets</span>
+						<span className="text__normal">Mastery</span>
 					</div>
 				</a>
-				<div className="float--right flex flex__row justify__center btn">
-					<span className="material-icons mright__5">
-						dark_mode
-					</span>
-					<input type="checkbox" className="switch" checked={isLight} onChange={(e) => switchTheme()} />
-					<span className="material-icons text__primary mleft__5">
-						light_mode
-					</span>
+				<div className="float--right flex flex__row justify__center btn" onClick={switchTheme}>
+					{isLight && 
+						<span className="material-icons mright__5">
+							dark_mode
+						</span>
+					}
+					{!isLight &&
+						<span className="material-icons text__primary mleft__5">
+							light_mode
+						</span>
+					}
 				</div>
 			</div>
 		</nav>	

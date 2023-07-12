@@ -38,10 +38,11 @@
 		.cheatsheets__board-item{
 			flex-basis: 32%;
 			margin: 3px;
-			border-radius: 15px;
+			border-radius: 1px;
 			overflow: hidden;
 			backdrop-filter: blur(12px);
 			background-color: var(--secondary);
+			border: 1px solid RGBA(var(--textColor-rgb) / 10%);
 
 			.cheatsheets__board-itemHeader{
 				display: flex;
@@ -69,10 +70,29 @@
 					background-color: var(--background);
 					margin-right: 5px;
 				}
+				.cheatsheets__board-itemHeaderText{
+					max-width: 90%;
+				}
 			}
 			.cheatsheets__board-itemBody {
 				margin-top: 10px;
-				//background-color: var(--light) !important;
+				margin-bottom: 30px;
+			}
+			.cheatsheets__board-itemFooter {
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				opacity: 0;
+				transition-delay: 0.1s;
+				transition-duration: 0.1s;
+				transition-property: opacity;
+			}
+			&:hover{
+				border-color: RGBA(var(--primary-rgb) / 20%);
+
+				.cheatsheets__board-itemFooter{
+					opacity: 1;
+				}
 			}
 		}
 	}

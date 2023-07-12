@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { menu } from './utils/NavItems';
 import '../scss/pages/Cheatsheets.scss';
+import { getCheatsheet } from '../api/Cheatsheetsapi';
 
 function Cheatsheet() {
 	const { id } = useParams();
@@ -21,6 +22,9 @@ function Cheatsheet() {
 			console.error('Error fetching JSON data:', error);
 		}
 	};
+	const goBack = () => {
+		window.history.back();
+	}
 
 	useEffect(() => {
 		if(!id) return;
@@ -46,18 +50,18 @@ function Cheatsheet() {
 						<h5 className='text__muted'>{cheatsheet.pageSubtitle}</h5>
 						<div className='flex flex__row'>
 							<div>
-								<div className="btn btn__secondary btn__md">
+								<a className="btn btn__secondary btn__md" onClick={goBack}>
 									<span className="material-icons font__20">
 										arrow_back_ios
 									</span>
 									Back
-								</div>
-								<div className="btn btn__inverted btn__md text__secondary">
+								</a>
+								{/* <div className="btn btn__inverted btn__md text__secondary">
 									<span className="material-icons font__20">
 										download
 									</span>
 									Download
-								</div>
+								</div> */}
 							</div>
 							<div className="float--right">
 								<div className="btn btn__inverted btn__md">
@@ -92,20 +96,24 @@ function Cheatsheet() {
 							<div className={`card cheatsheets__board-item`} key={`group_item_${idx}`}>
 								<div className="cheatsheets__board-itemHeader">
 									<div className="cheatsheets__board-itemHeaderControl">
-										{/* <div className="cheatsheets__board-itemControl"></div>
-										<div className="cheatsheets__board-itemControl"></div>
-										<div className="cheatsheets__board-itemControl"></div> */}
 										<input type="checkbox"/>
 									</div>
-									{item.title}
+									<code className="text__bold font__16 cheatsheets__board-itemHeaderText">{item.title}</code>
 								</div>
 								<div className="cheatsheets__board-itemBody">
 									{item.description}
-									<div className="flex flex__row">
-										<button className="btn btn__primary-soft btn__sm text__normal">
-											/ Ask GPT
-										</button>
-									</div>
+								</div>
+								<div className="cheatsheets__board-itemFooter">
+									<button className="btn btn__secondary text__muted btn__md">
+										<span className="material-icons font__15">
+											thumb_up
+										</span>
+									</button>
+									<button className="btn btn__secondary text__muted btn__md">
+										<span className="material-icons font__15">
+											thumb_down
+										</span>
+									</button>
 								</div>
 							</div>
 						)

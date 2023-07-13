@@ -3,23 +3,24 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { menu } from './utils/NavItems';
+import rocketAnimation from '../animations/rocket.json';
 import '../scss/pages/Cheatsheets.scss';
 import { getCheatsheet } from '../api/Cheatsheetsapi';
+import Lottie from 'react-lottie-player';
 
 function Cheatsheet() {
 	const { id } = useParams();
 	const [cheatsheet, setCheatsheet] = useState(null);
-	const [jsonData, setJsonData] = useState(null);
+	const [jsonData, setJsonData] = useState([]);
 	const [selectedGroup, setSelectedGroup] = useState(null);
-	const [docs, setDocs] = useState(null);
 
 	const fetchData = async () => {
-		try {
-			const response = await fetch(`/cheatsheets/${id}.json`);
-			const data = await response.json();
-			setJsonData(data);
-		} catch (error) {
-			console.error('Error fetching JSON data:', error);
+		const data = await getCheatsheet(id).then(res => res.json());
+		if(data.status === 'SUCCESS'){
+			setJsonData(data.data);
+			console.log(data.data);
+		}else{
+			throw new Error('Could not retrieve data');
 		}
 	};
 	const goBack = () => {
@@ -37,7 +38,7 @@ function Cheatsheet() {
 
 	useEffect(() => {
 		if(!selectedGroup){
-			setSelectedGroup(jsonData?.groups[0]);
+			setSelectedGroup(jsonData?.[0]);
 		}
 	}, [jsonData, selectedGroup])
 
@@ -64,31 +65,33 @@ function Cheatsheet() {
 								</div> */}
 							</div>
 							<div className="float--right">
-								<div className="btn btn__inverted btn__md">
+								<a className="btn btn__inverted btn__md" href="https://github.com/MRmarioruci/seMastery" target='_blank'>
 									<span className="material-icons font__20 mright--5">
 										chat_bubble_outline
 									</span>
 									Suggest Changes
-								</div>
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			}
-			<div className='cheatsheets__menu'>
-				<div className={`btn btn__transparent`}>
-					My Board
+			{jsonData.length > 0 &&
+				<div className='cheatsheets__menu'>
+					{/* <div className={`btn ${selectedGroup === 'board' ? 'btn__primary-soft' : 'btn__transparent'}`} onClick={() => setSelectedGroup('board')}>
+						My Board
+					</div>
+					<div className="separator">
+					</div> */}
+					{jsonData?.map((group, idx) => {
+						return (
+							<div className={`btn ${selectedGroup?.title === group.title ? 'btn__primary-soft' : 'btn__transparent'} btn__rounded`} key={`group_${idx}`} onClick={() => setSelectedGroup(group)}>
+								{group.title}
+							</div>
+						)
+					})}
 				</div>
-				<div className="separator">
-				</div>
-				{jsonData?.groups?.map((group, idx) => {
-					return (
-						<div className={`btn ${selectedGroup?.title === group.title ? 'btn__primary-soft' : 'btn__transparent'} btn__rounded`} key={`group_${idx}`} onClick={() => setSelectedGroup(group)}>
-							{group.title}
-						</div>
-					)
-				} )}
-			</div>
+			}
 			{ selectedGroup &&
 				<div className='cheatsheets__board'>
 					{selectedGroup?.docs?.map((item, idx) => {
@@ -98,20 +101,21 @@ function Cheatsheet() {
 									<div className="cheatsheets__board-itemHeaderControl">
 										<input type="checkbox"/>
 									</div>
-									<code className="text__bold font__16 cheatsheets__board-itemHeaderText">{item.title}</code>
+									<code className="text__bold font__16 cheatsheets__board-itemHeaderText">{item?.title}</code>
 								</div>
 								<div className="cheatsheets__board-itemBody">
-									{item.description}
+									{item?.description}
+									<div className="cheatsheets__board-itemBodyImage">
+										{item?.image}
+									</div>
+									<div className="cheatsheets__board-itemBodyCode">
+										{item?.code}
+									</div>
 								</div>
 								<div className="cheatsheets__board-itemFooter">
 									<button className="btn btn__secondary text__muted btn__md">
-										<span className="material-icons font__15">
-											thumb_up
-										</span>
-									</button>
-									<button className="btn btn__secondary text__muted btn__md">
-										<span className="material-icons font__15">
-											thumb_down
+										<span className="material-icons">
+											favorite_border
 										</span>
 									</button>
 								</div>
@@ -120,7 +124,18 @@ function Cheatsheet() {
 					})}
 				</div>
 			}
-			
+			{jsonData.length === 0 &&
+				<div className="text__center">
+					<Lottie
+						loop
+						animationData={rocketAnimation}
+						play
+						style={{ width: '250px', height: '250px', margin: 'auto' }}
+					/>
+					<h4>Cheatsheet under development</h4>
+					<h5 className="text__muted">Please be patient my lord.</h5>
+				</div>
+			}
 		</div>
 	)
 }

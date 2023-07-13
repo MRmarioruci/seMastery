@@ -141,3 +141,9 @@ a {
 		margin: auto;
 	}
 }
+.logo__grayscale{
+	-webkit-filter: grayscale(.6);
+}
+.contact__email{
+	border-radius: 25px !important;
+}

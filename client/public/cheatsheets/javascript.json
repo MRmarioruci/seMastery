@@ -1,56 +1,94 @@
 {
 	"collectionName": "javascript",
+	"title": "Javascript",
+	"icon": "https://api.iconify.design/logos:javascript.svg",
 	"groups": [
 		{
 			"title": "Basics",
 			"docs": [
 				{
 					"title": "Coercion",
-					"description": "Coercion is the process of converting a value from one data type to another. This can happen implicitly or explicitly. Implicitly: Javascript automatically converts types, Explicitly: You order the conversion"
+					"description": "Coercion is the process of converting a value from one data type to another. This can happen implicitly or explicitly. Implicitly: Javascript automatically converts types, Explicitly: You order the conversion",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Scope",
-					"description": "Each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name"
+					"description": "Each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "use strict",
-					"description": "Literal that throws an error if a global variable is created by mistake"
+					"description": "Literal that throws an error if a global variable is created by mistake",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "null vs undefined",
-					"description": "Something hasn't been initialized : undefined, Something is currently unavailable: null"
+					"description": "Something hasn't been initialized : undefined, Something is currently unavailable: null",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Immediately Invoked Function Expressions",
-					"description": "Function that executes immediately after it's created."
+					"description": "Function that executes immediately after it's created.",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Difference between let, const, and var?",
-					"description": ""
+					"description": "",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Closures",
-					"description": "A function that has access to variables in its outer (enclosing) lexical scope"
+					"description": "A function that has access to variables in its outer (enclosing) lexical scope",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Event loop",
-					"description": ""
+					"description": "",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Higher Order Functions",
-					"description": "Functions that take other functions as argument and return a result based on those"
+					"description": "Functions that take other functions as argument and return a result based on those",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Hoisting",
-					"description": "Functions are stored with a reference to the entire functions, variables with the var keyword with the value of undefined, and variables with the let and const keyword are stored uninitialized."
+					"description": "Functions are stored with a reference to the entire functions, variables with the var keyword with the value of undefined, and variables with the let and const keyword are stored uninitialized.",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Function declaration vs function expression?",
-					"description": "Function Declaration: A statement that defines a named function with the function keyword, Function Expression: A function that is assigned to a variable. Difference is hoisting"
+					"description": "Function Declaration: A statement that defines a named function with the function keyword, Function Expression: A function that is assigned to a variable. Difference is hoisting",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				},
 				{
 					"title": "Rest parameter vs spread operator",
-					"description": "Allows a function to accept indefinite amount oa parameter, Allows iterables to be expanded into single arguments/elements"
+					"description": "Allows a function to accept indefinite amount oa parameter, Allows iterables to be expanded into single arguments/elements",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				}
 			]
 		},
@@ -59,7 +97,10 @@
 			"docs": [
 				{
 					"title": "Callback function",
-					"description": "A function that is passed as an argument to another function and is called after an opertation has completed."
+					"description": "A function that is passed as an argument to another function and is called after an opertation has completed.",
+					"image": "",
+					"code": "",
+					"longDescription": ""
 				}
 			]
 		}

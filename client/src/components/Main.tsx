@@ -1,7 +1,6 @@
 import mainAnimation from '../animations/main.json';
 import Lottie from 'react-lottie-player'
 import {menu} from './utils/NavItems';
-import Footer from './Footer';
 import contactAnimation from '../animations/contact.json';
 
 function Main() {
@@ -122,7 +121,6 @@ function Main() {
 					</div>
 				</div> */}
 			</div>
-			<Footer />
 		</>
 	)
 }

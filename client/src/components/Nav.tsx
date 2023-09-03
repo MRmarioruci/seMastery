@@ -7,8 +7,8 @@ function Nav() {
 		setTheme(isLight ? 'theme-dark' : 'theme-light');
 		setIsLight(!isLight);
 	}
-	const setTheme = (theme) => {
-		const body = document.querySelector('body');
+	const setTheme = (theme:string) => {
+		const body = document.querySelector('body')!;
 		body.dataset.theme = theme;
 		localStorage.setItem('theme', theme)
 	}
@@ -26,17 +26,25 @@ function Nav() {
 						<span className="text__normal">Mastery</span>
 					</div>
 				</a>
-				<div className="float--right flex flex__row justify__center btn" onClick={switchTheme}>
-					{isLight && 
-						<span className="material-icons mright__5">
-							dark_mode
-						</span>
-					}
-					{!isLight &&
-						<span className="material-icons text__primary mleft__5">
-							light_mode
-						</span>
-					}
+				<div className="float--right flex flex__row justify__center">
+					{/* <div className="btn btn__primary-soft btn__md">
+						Login	
+					</div>
+					<div className="btn btn__secondary btn__md">
+						Register
+					</div> */}
+					<div onClick={switchTheme} className="justify__center btn">
+						{isLight &&
+							<span className="material-icons mright__5">
+								dark_mode
+							</span>
+						}
+						{!isLight &&
+							<span className="material-icons text__primary mleft__5">
+								light_mode
+							</span>
+						}
+					</div>
 				</div>
 			</div>
 		</nav>	

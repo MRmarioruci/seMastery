@@ -3,6 +3,8 @@ import './scss/main.scss';
 import Main from './components/Main';
 import Nav from './components/Nav';
 import Cheatsheet from "./components/Cheatsheet";
+import Footer from "./components/Footer";
+import Community from "./components/Community";
 
 function App() {
 	return (
@@ -14,6 +16,8 @@ function App() {
 					<Route path="/:id" element={<Cheatsheet />} />
 				</Routes>
 			</BrowserRouter>
+			<Community />
+			<Footer />
 		</>
 	);
 }

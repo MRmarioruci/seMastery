@@ -2,6 +2,7 @@
 	"collectionName": "reactCheatsheet",
 	"title": "React.js",
 	"icon": "https://api.iconify.design/logos:react.svg",
+	"color": "00D8FF",
 	"groups": [
 		{
 			"title": "General",
@@ -78,7 +79,7 @@
 			"docs": [
 				{
 					"title": "useState",
-					"code": "const [counter, setCounter] = useState(0);\n\nreturn (\n  <div>\n    <p>Counter: {counter}</p>\n    <button onClick={() => setCounter(counter + 1)}>Increment</button>\n  </div>\n);",
+					"code": "const [counter, setCounter] = useState(0);\n\nreturn (\n  <div>\n    <p>Counter: {counter}</p>\n    <button onClick={() => setCounter(counter + 1)}>\n      Increment\n    </button>\n  </div>\n);",
 					"description": "Used for managing state variables in functional components."
 				},
 				{

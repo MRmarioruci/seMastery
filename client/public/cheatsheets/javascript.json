@@ -2,6 +2,7 @@
 	"collectionName": "javascript",
 	"title": "Javascript",
 	"icon": "https://api.iconify.design/logos:javascript.svg",
+	"color": "F7DF1E",
 	"groups": [
 		{
 			"title": "Basics",

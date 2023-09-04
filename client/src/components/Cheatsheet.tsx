@@ -7,8 +7,10 @@ import rocketAnimation from '../animations/rocket.json';
 import '../scss/pages/Cheatsheets.scss';
 import { getCheatsheet } from '../api/Cheatsheetsapi';
 import Lottie from 'react-lottie-player';
-import { Highlight } from "prism-react-renderer";
-import { Cheatsheet, CheatsheetDoc, CheatSheetGroup } from '../types/index';
+import CheatsheetItem from './CheatsheetItem';
+import CheatsheetItemModal from './CheatsheetItemModal';
+import { Cheatsheet, CheatsheetDoc, CheatSheetGroup, ToggleCheatsheetFunction } from '../types/index';
+import { hexToRGB } from '../utils/color';
 
 function CheatsheetComponent() {
 	const { id } = useParams();
@@ -17,6 +19,8 @@ function CheatsheetComponent() {
 	const [selectedGroup, setSelectedGroup] = useState<CheatSheetGroup | null>(null);
 	const [title, setTitle] = useState<string>('');
 	const [icon, setIcon] = useState<string>('');
+	const [showModal, setShowModal] = useState<boolean>(false);
+	const [selectedCheatSheet, setSelectedCheatsheet] = useState<null | Cheatsheet>(null);
 
 	const fetchData = useCallback(async () => {
 		const data: CheatsheetDoc = await getCheatsheet(id || '');
@@ -25,14 +29,19 @@ function CheatsheetComponent() {
 		setIcon(data.icon);
 		setTitle(data?.title);
 		setJsonData(data.groups);
+		const darkThemeElement = document.querySelector<HTMLElement>('[data-theme="theme-dark"]');
+		if (darkThemeElement && data.color) {
+			darkThemeElement.style.setProperty('--primary', `#${data.color}`);
+			darkThemeElement.style.setProperty('--primary-rgb', hexToRGB(data.color));
+		}
 	}, [id]);
 	const goBack = () => {
 		window.history.back();
 	}
-	const createMarkup = (htmlContent:string) => {
-		return { __html: htmlContent };
-	};
-
+	const toggleCheatsheet:ToggleCheatsheetFunction = (cheatsheet: Cheatsheet | null) => {
+		setShowModal( prev => !prev);
+		setSelectedCheatsheet(cheatsheet);
+	}
 	useEffect(() => {
 		if(!id) return;
 		
@@ -42,13 +51,11 @@ function CheatsheetComponent() {
 		setCheatsheet(c);
 		fetchData();
 	}, [id, fetchData])
-
 	useEffect(() => {
 		if(!selectedGroup){
 			setSelectedGroup(jsonData?.[0]);
 		}
 	}, [jsonData, selectedGroup])
-
 	return (
 		<div className="cheatsheets">
 			{cheatsheet &&
@@ -112,52 +119,7 @@ function CheatsheetComponent() {
 			{ selectedGroup &&
 				<div className='cheatsheets__board'>
 					{selectedGroup?.docs?.map((item:Cheatsheet, idx:number) => {
-						return (
-							<div className={`card cheatsheets__board-item`} key={`group_item_${idx}`}>
-								<div className="cheatsheets__board-itemHeader">
-									{/* <div className="cheatsheets__board-itemHeaderControl">
-										<input type="checkbox"/>
-									</div> */}
-									<code className="text__bold font__16 cheatsheets__board-itemHeaderText">{item?.title}</code>
-								</div>
-								<div className="cheatsheets__board-itemBody">
-									<div className="text__muted" dangerouslySetInnerHTML={createMarkup(item.description)}></div>
-									{item.image &&
-										<div className="cheatsheets__board-itemBodyImage">
-											{item.image}
-										</div>
-									}
-									{item.code && 
-										<pre className="cheatsheets__board-itemBodyCode">
-											<Highlight
-												code={item.code}
-												language="tsx"
-											>
-												{({ className, style, tokens, getLineProps, getTokenProps }) => (
-													<pre style={style} className="cheatsheets__board-itemBodyCodeInner">
-														{tokens.map((line, i) => (
-														<div key={i} {...getLineProps({ line })}>
-															{line.map((token, key) => (
-																<span key={key} {...getTokenProps({ token })} />
-															))}
-														</div>
-														))}
-													</pre>
-												)}
-											</Highlight>
-										</pre>
-									}
-									
-								</div>
-								<div className="cheatsheets__board-itemFooter">
-									{/* <button className="btn btn__secondary text__muted btn__md">
-										<span className="material-icons">
-											favorite_border
-										</span>
-									</button> */}
-								</div>
-							</div>
-						)
+						return <CheatsheetItem item={item} key={`group_item_${idx}`} toggleCheatsheet={toggleCheatsheet} />
 					})}
 				</div>
 			}
@@ -173,6 +135,7 @@ function CheatsheetComponent() {
 					<h5 className="text__muted">Please be patient my lord.</h5>
 				</div>
 			}
+			{showModal && <CheatsheetItemModal item={selectedCheatSheet} toggleCheatsheet={toggleCheatsheet} />}
 		</div>
 	)
 }

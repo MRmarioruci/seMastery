@@ -142,6 +142,16 @@
 		word-break: break-all;
 		overflow: hidden;
 	}
+	.modal__cheatsheet-download{
+		position: absolute;
+		top: 25px;
+		left: 25px;
+		cursor: pointer;
+
+		&:hover{
+			opacity: 0.5;
+		}
+	}
 }
 @keyframes gradient {
 	0% {

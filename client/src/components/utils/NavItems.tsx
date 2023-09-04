@@ -2,15 +2,11 @@ export const menu = [
 	{
 		title: 'Javascript',
 		href: 'javascript',
-		pageTitle: 'Javascript Cheatsheet',
-		pageSubtitle: 'A detailed cheatsheet for quick study reference',
 		icon: '',
 	},
 	{
 		title: 'Typescript',
 		href: 'typescript',
-		pageTitle: 'Typescript Cheatsheet',
-		pageSubtitle: 'A detailed cheatsheet for quick study reference',
 		icon: '',
 	},
 	{

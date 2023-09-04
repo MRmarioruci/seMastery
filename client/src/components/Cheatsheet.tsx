@@ -38,7 +38,6 @@ function CheatsheetComponent() {
 		
 		const c = menu.find( item => item.href === id);
 		if(!c) throw new Error(`Could not find the requested ${id} menu item`);
-		console.log(c);
 
 		setCheatsheet(c);
 		fetchData();

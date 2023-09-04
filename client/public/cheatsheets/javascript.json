@@ -7,100 +7,128 @@
 			"title": "Basics",
 			"docs": [
 				{
+					"title": "What is Javascript?",
+					"description": "JavaScript is a high-level, interpreted programming language primarily used for web development. It is often executed in web browsers and allows developers to create interactive and dynamic web applications. ",
+					"image": "",
+					"code": ""
+				},
+				{
+					"title": "Difference between let, const and var",
+					"description": "All 3 are used for variable declaration. \n <p><strong>var:</strong> Function-scoped and are hoisted to the top of their containing function or global scope. They can be redeclared within the same scope, and their values can be reassigned.<\/p> <p><strong>let:<\/strong> Block-scoped, which means they are confined to the nearest enclosing block (e.g., a loop or an if statement). They are also hoisted but are not initialized until they are declared. let variables cannot be redeclared in the same scope but can have their values reassigned.<\/p> <p><strong>const:<\/strong> Variables declared with const are also block-scoped, and they cannot be reassigned after they are assigned a value. This makes const suitable for defining constants.<\/p>",
+					"image": "",
+					"code": ""
+				},
+				{
 					"title": "Coercion",
 					"description": "Coercion is the process of converting a value from one data type to another. This can happen implicitly or explicitly. Implicitly: Javascript automatically converts types, Explicitly: You order the conversion",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": ""
 				},
 				{
 					"title": "Scope",
 					"description": "Each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": ""
 				},
 				{
 					"title": "use strict",
-					"description": "Literal that throws an error if a global variable is created by mistake",
+					"description": "Directive enforces stricter error-checking and helps catch common coding mistakes.",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": "// Without \"use strict\"\nfunction duplicateParams(a, a) {\n  return a + a;\n}\n\n// With \"use strict\"\n\"use strict\";\nfunction strictDuplicateParams(a, a) {\n  // Throws a SyntaxError\n  return a + a;\n}"
+				},
+				{
+					"title": "Difference between == & ===",
+					"description": "<p>== (loose equality): This operator compares values for equality after performing type coercion. It converts the operands to the same type before making the comparison. For example, \"5\" == 5 would evaluate to true because the string is coerced to a number.</p><p>=== (strict equality): This operator compares both the values and the types of the operands. It returns true if both the values and types are the same. For example, \"5\" === 5 would evaluate to false because the types are different.</p>",
+					"image": "",
+					"code": "// Loose Equality (==)\nconsole.log('5' == 5); // Outputs: true because of type coercion\n// Strict Equality (===)\nconsole.log('5' === 5);\n// Outputs: false because types are different"
 				},
 				{
 					"title": "null vs undefined",
-					"description": "Something hasn't been initialized : undefined, Something is currently unavailable: null",
+					"description": "undefined: Something hasn't been initialized, null: Something is currently unavailable",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": ""
 				},
 				{
 					"title": "Immediately Invoked Function Expressions",
-					"description": "Function that executes immediately after it's created.",
+					"description": "Allows you to define and execute a function immediately after its creation. It's often used to encapsulate variables and functions, creating a private scope for them",
 					"image": "",
-					"code": "",
-					"longDescription": ""
-				},
-				{
-					"title": "Difference between let, const, and var?",
-					"description": "",
-					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": "(function () {\n  // This code is inside the IIFE and is executed immediately\n  let message = 'Hello, I am inside an IIFE!';\n  console.log(message);\n})();\n// Outside the IIFE, you can't access the 'message' variable"
 				},
 				{
 					"title": "Closures",
-					"description": "A function that has access to variables in its outer (enclosing) lexical scope",
+					"description": "<b>A closure in JavaScript is a function that has access to variables from its containing (enclosing) function</b>, even after the enclosing function has finished executing. Closures work because functions in JavaScript 'remember' their lexical scope, which means they remember the environment in which they were created. This allows you to create private variables and encapsulated functionality. Closures are often used to create modular and maintainable code.",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": "function outerFunction() {\n  let outerVar = 'I am from outerFunction';\n  function innerFunction() {\n    console.log(outerVar);\n  }\n  return innerFunction;\n}\n\nconst closure = outerFunction();\nclosure();\n// This will print 'I am from outerFunction' because innerFunction still has access to outerVar even though outerFunction has finished executing."
 				},
 				{
 					"title": "Event loop",
-					"description": "",
+					"description": "The event loop is a mechanism that enables JavaScript to execute code asynchronously, handle events, and manage I/O operations without blocking the main execution thread. It ensures that tasks are processed in a timely and efficient manner. Great visual article here: <a href='https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke' target='_blank'>dev.to</a>",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": ""
 				},
 				{
 					"title": "Higher Order Functions",
-					"description": "Functions that take other functions as argument and return a result based on those",
+					"description": "Functions that can take other functions as arguments or return functions as their results.",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": "const add = (x) => x + 2;\nconst multiply = (x) => x * 3;\nconst composedFunction = (x) => multiply(add(x));\nconst result = composedFunction(5);\n// result is 21 (5 + 2 = 7, 7 * 3 = 21)"
 				},
 				{
 					"title": "Hoisting",
-					"description": "Functions are stored with a reference to the entire functions, variables with the var keyword with the value of undefined, and variables with the let and const keyword are stored uninitialized.",
+					"description": "Hoisting is a JavaScript behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase, before the code is executed. This means you can use a variable or function before it's declared in your code without raising an error. Functions are stored with a reference to the entire function, variables with the var keyword with the value of undefined, and variables with the let and const keyword are stored uninitialized.",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": "console.log(x); // Outputs: undefined\nvar x = 10;"
 				},
 				{
 					"title": "Function declaration vs function expression?",
 					"description": "Function Declaration: A statement that defines a named function with the function keyword, Function Expression: A function that is assigned to a variable. Difference is hoisting",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": "// Function declaration \nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\n\n// Function expression \nconst greet = function (name) {\n  return `Hello, ${name}!`;\n};\n"
 				},
 				{
 					"title": "Rest parameter vs spread operator",
-					"description": "Allows a function to accept indefinite amount oa parameter, Allows iterables to be expanded into single arguments/elements",
+					"description": "Rest: Allows a function to accept indefinite amount oa parameter, Spread: Allows iterables to be expanded into single arguments/elements",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": "// Rest \nfunction sum(...numbers) {\n  return numbers.reduce((total, num) => total + num, 0);\n}\n\nconsole.log(sum(1, 2, 3, 4, 5)); // 15\n// Spread operator \nconst arr1 = [1, 2, 3];\nconst arr2 = [4, 5, 6];\nconst combinedArray = [...arr1, ...arr2]; // Combines the arrays\nconsole.log(combinedArray); // [1, 2, 3, 4, 5, 6]\n"
 				}
 			]
 		},
 		{
-			"title": "Async programming",
+			"title": "Promises and Asynchronous Programming",
 			"docs": [
+				{
+					"title": "What is a Promise?",
+					"description": "",
+					"image": "",
+					"code": ""
+				},
+				{
+					"title": "How do you handle errors in Promises?",
+					"description": "",
+					"image": "",
+					"code": ""
+				},
+				{
+					"title": "Explain the concept of async/await",
+					"description": "",
+					"image": "",
+					"code": ""
+				},
 				{
 					"title": "Callback function",
 					"description": "A function that is passed as an argument to another function and is called after an opertation has completed.",
 					"image": "",
-					"code": "",
-					"longDescription": ""
+					"code": ""
+				}
+			]
+		},
+		{
+			"title": "Array methods",
+			"docs": [
+				{
+					"title": "What is a Promise?",
+					"description": "",
+					"image": "",
+					"code": ""
 				}
 			]
 		}

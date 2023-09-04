@@ -123,13 +123,57 @@
 			]
 		},
 		{
-			"title": "Array methods",
+			"title": "Array Methods",
 			"docs": [
 				{
-					"title": "What is a Promise?",
-					"description": "",
-					"image": "",
-					"code": ""
+					"title": "push()",
+					"description": "Adds one or more elements to the end of an array and returns the new length of the array. Useful for appending elements to an existing array.",
+					"code": "const fruits = ['apple', 'banana'];\nfruits.push('cherry');\n// Result: fruits is now ['apple', 'banana', 'cherry']"
+				},
+				{
+					"title": "pop()",
+					"description": "Removes the last element from an array and returns that element. Helpful for extracting and using the last item in an array.",
+					"code": "const fruits = ['apple', 'banana', 'cherry'];\nconst removedFruit = fruits.pop();\n// Result: removedFruit is 'cherry', fruits is now ['apple', 'banana']"
+				},
+				{
+					"title": "shift()",
+					"description": "Removes the first element from an array and returns that element. Ideal for dequeuing items from a queue-like data structure.",
+					"code": "const fruits = ['apple', 'banana', 'cherry'];\nconst removedFruit = fruits.shift();\n// Result: removedFruit is 'apple', fruits is now ['banana', 'cherry']"
+				},
+				{
+					"title": "unshift()",
+					"description": "Adds one or more elements to the beginning of an array and returns the new length of the array. Good for prepending items to an array.",
+					"code": "const fruits = ['banana', 'cherry'];\nfruits.unshift('apple');\n// Result: fruits is now ['apple', 'banana', 'cherry']"
+				},
+				{
+					"title": "concat()",
+					"description": "Combines two or more arrays and returns a new array without modifying the original arrays. Useful for creating a merged copy of arrays.",
+					"code": "const fruits1 = ['apple', 'banana'];\nconst fruits2 = ['cherry', 'orange'];\nconst combinedFruits = fruits1.concat(fruits2);\n// Result: combinedFruits is ['apple', 'banana', 'cherry', 'orange']"
+				},
+				{
+					"title": "slice()",
+					"description": "Returns a shallow copy of a portion of an array into a new array. Great for extracting specific sections of an array without altering the original.",
+					"code": "const fruits = ['apple', 'banana', 'cherry', 'orange'];\nconst slicedFruits = fruits.slice(1, 3);\n// Result: slicedFruits is ['banana', 'cherry']"
+				},
+				{
+					"title": "splice()",
+					"description": "Changes the contents of an array by removing, replacing, or adding elements. Useful for precise control over array modification.",
+					"code": "const fruits = ['apple', 'banana', 'cherry'];\nfruits.splice(1, 1, 'orange');\n// Result: fruits is now ['apple', 'orange', 'cherry']"
+				},
+				{
+					"title": "forEach()",
+					"description": "Executes a provided function once for each array element. Perfect for iterating through arrays and performing actions on each item.",
+					"code": "const numbers = [1, 2, 3];\nnumbers.forEach((number) => {\n  console.log(number * 2);\n});\n// Result: Prints 2, 4, 6"
+				},
+				{
+					"title": "map()",
+					"description": "Creates a new array by applying a function to each element of an existing array. Great for transforming one array into another.",
+					"code": "const numbers = [1, 2, 3];\nconst doubledNumbers = numbers.map((number) => number * 2);\n// Result: doubledNumbers is [2, 4, 6]"
+				},
+				{
+					"title": "filter()",
+					"description": "Creates a new array with all elements that pass a provided test. Useful for selectively extracting elements based on a condition.",
+					"code": "const numbers = [1, 2, 3, 4, 5];\nconst evenNumbers = numbers.filter((number) => number % 2 === 0);\n// Result: evenNumbers is [2, 4]"
 				}
 			]
 		}

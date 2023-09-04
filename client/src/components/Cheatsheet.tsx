@@ -1,6 +1,6 @@
 //import mainAnimation from '../animations/main.json';
 //import Lottie from 'react-lottie-player'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { menu } from './utils/NavItems';
 import rocketAnimation from '../animations/rocket.json';
@@ -18,14 +18,14 @@ function CheatsheetComponent() {
 	const [title, setTitle] = useState<string>('');
 	const [icon, setIcon] = useState<string>('');
 
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
 		const data: CheatsheetDoc = await getCheatsheet(id || '');
 		if(!data) return;
 
 		setIcon(data.icon);
 		setTitle(data?.title);
 		setJsonData(data.groups);
-	};
+	}, [id]);
 	const goBack = () => {
 		window.history.back();
 	}
@@ -42,7 +42,7 @@ function CheatsheetComponent() {
 
 		setCheatsheet(c);
 		fetchData();
-	}, [id])
+	}, [id, fetchData])
 
 	useEffect(() => {
 		if(!selectedGroup){
@@ -58,17 +58,17 @@ function CheatsheetComponent() {
 						{/* <h3>{cheatsheet.pageTitle}</h3>
 						<h5 className='text__muted'>{cheatsheet.pageSubtitle}</h5> */}
 						<div className="flex flex__row">
-							{icon && <img src={icon} width={30}/>}
+							{icon && <img alt="Icon" src={icon} width={30}/>}
 							{title && <h3>{title}</h3>}
 						</div>
 						<div className='flex flex__row mtop--20'>
 							<div>
-								<a className="btn btn__secondary btn__md" onClick={goBack}>
+								<div className="btn btn__secondary btn__md" onClick={goBack}>
 									<span className="material-icons font__20">
 										arrow_back_ios
 									</span>
 									Back
-								</a>
+								</div>
 								{/* <div className="btn btn__inverted btn__md text__secondary">
 									<span className="material-icons font__20">
 										download
@@ -77,7 +77,7 @@ function CheatsheetComponent() {
 								</div> */}
 							</div>
 							<div className="float--right">
-								<a className="btn btn__inverted btn__md" href="https://github.com/MRmarioruci/seMastery" target='_blank'>
+								<a className="btn btn__inverted btn__md" href="https://github.com/MRmarioruci/seMastery" target='_blank' rel="noreferrer">
 									<span className="material-icons font__20 mright--5">
 										chat_bubble_outline
 									</span>

@@ -8,14 +8,14 @@ function Footer() {
 			<div className='footer__inner text__center'>
 				<div className="text__center flex flex__column align--center">
 					<a className="flex flex__row justify__center align--center logo__grayscale" href="/">
-						<img src={logo} width="35" />
+						<img alt="logo" src={logo} width="35" />
 						<div className="text__bold font__25 mtop--10 logo__text">
 							<b className="text__primary">SE</b>
 							<span className="text__normal">Mastery</span>
 						</div>
 					</a>
 				</div>
-				<a href="https://marioruci.com" target='_blank'>
+				<a href="https://marioruci.com" target='_blank' rel="noreferrer">
 					<code className="btn btn__primary btn__sm">{'<'}by Mario Ruci {'/>'}</code>
 				</a>
 				<div className="mtop__20">

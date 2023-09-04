@@ -20,7 +20,7 @@ function Nav() {
 		<nav className="nav">
 			<div className="nav__inner">
 				<a className="flex flex__row justify__center" href="/">
-					<img src={logo} width="50" />
+					<img src={logo} width="50" alt="logo" />
 					<div className="text__bold font__30 mtop--10 logo__text">
 						<b className="text__primary">SE</b>
 						<span className="text__normal">Mastery</span>

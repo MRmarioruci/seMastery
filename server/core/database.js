@@ -2,7 +2,7 @@ require('dotenv');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const utils = require('./utils');
 
-const uri = "";
+const uri = "mongodb+srv://semastery:6AauJId93sJmINSe@clusterse.1xceupq.mongodb.net/?retryWrites=true&w=majority";
 class Database{
 	constructor() {
 		this.connection = null;

@@ -3,6 +3,7 @@
 	"title": "React.js",
 	"icon": "https://api.iconify.design/logos:react.svg",
 	"color": "00D8FF",
+	"highlighter": "tsx",
 	"groups": [
 		{
 			"title": "General",

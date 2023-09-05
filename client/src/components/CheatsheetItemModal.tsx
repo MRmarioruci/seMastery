@@ -4,13 +4,12 @@ import CheatsheetItem from './CheatsheetItem';
 import html2canvas from "html2canvas";
 
 function CheatsheetItemModal(props: CheatsheetModalItemProps) {
-    const {item, toggleCheatsheet} = props;
+    const {item, toggleCheatsheet, highlighter, highlighterTheme} = props;
 	const [downloading, setDownloading] = useState<boolean>(false);
 	const myRef = useRef<HTMLDivElement | null>(null);
     if(!item) return;
 
 	const handleClickTakeScreenShot = () => {
-		setDownloading(true);
 		if(!myRef.current) return;
 		
 		const { cropPositionTop, cropPositionLeft, cropWidth, cropHeigth } = {
@@ -31,6 +30,7 @@ function CheatsheetItemModal(props: CheatsheetModalItemProps) {
 			
 			const a = document.createElement("a");
 			a.href = croppedCanvas.toDataURL();
+			console.log(item);
 			a.download = "receipt.png";
 			a.click();
 		})
@@ -40,7 +40,7 @@ function CheatsheetItemModal(props: CheatsheetModalItemProps) {
 	};
 	return (
 		<div className="modal__overlay active modal__cheatsheet">
-            <div className="modal active animate__animated animate__zoomIn modal__md" ref={myRef}>
+            <div className="modal active animate__animated animate__zoomIn modal__md">
 				{ !downloading &&
 					<div className="modal__header">
 						<div className="modal__header-title">
@@ -58,7 +58,9 @@ function CheatsheetItemModal(props: CheatsheetModalItemProps) {
 				}
                 <div className="modal__content">
                     <div className="modal__body">
-						<CheatsheetItem item={item} toggleCheatsheet={toggleCheatsheet} />
+						<div ref={myRef}>
+							<CheatsheetItem item={item} toggleCheatsheet={toggleCheatsheet} highlighter={highlighter} highlighterTheme={highlighterTheme} />
+						</div>
                     </div>
                 </div>
             </div>

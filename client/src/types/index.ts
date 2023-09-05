@@ -8,12 +8,14 @@ export type CheatSheetGroup = {
     "title": string,
     "docs": Cheatsheet[]
 }
+export type Highlighter = 'js' | 'tsx'
 export type CheatsheetDoc = {
     "collectionName": string,
 	"title": string,
 	"icon": string,
     "color"?: string,
-	"groups": CheatSheetGroup[]
+	"groups": CheatSheetGroup[],
+    "highlighter": Highlighter
 }
 export type html = {
     htmlContent: string
@@ -21,9 +23,13 @@ export type html = {
 export type ToggleCheatsheetFunction = (cheatsheet: Cheatsheet | null) => void;
 export interface CheatsheetItemProps {
 	item: Cheatsheet,
+    highlighter: Highlighter,
+    highlighterTheme: string,
 	toggleCheatsheet: ToggleCheatsheetFunction
 }
 export interface CheatsheetModalItemProps {
 	item: Cheatsheet | null,
+    highlighter: Highlighter,
+    highlighterTheme: string,
 	toggleCheatsheet: ToggleCheatsheetFunction
 }

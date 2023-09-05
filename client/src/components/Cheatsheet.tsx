@@ -9,17 +9,21 @@ import { getCheatsheet } from '../api/Cheatsheetsapi';
 import Lottie from 'react-lottie-player';
 import CheatsheetItem from './CheatsheetItem';
 import CheatsheetItemModal from './CheatsheetItemModal';
-import { Cheatsheet, CheatsheetDoc, CheatSheetGroup, ToggleCheatsheetFunction } from '../types/index';
+import { Cheatsheet, CheatsheetDoc, CheatSheetGroup, Highlighter, ToggleCheatsheetFunction } from '../types/index';
 import { hexToRGB } from '../utils/color';
+import HighlighterThemeSelector from './HighlighterThemeSelector';
+import { useCustomContext } from '../contexts/theme-context';
 
 function CheatsheetComponent() {
 	const { id } = useParams();
+	const {state} = useCustomContext();
 	const [cheatsheet, setCheatsheet] = useState<any>(null);
 	const [jsonData, setJsonData] = useState<CheatSheetGroup[]>([]);
 	const [selectedGroup, setSelectedGroup] = useState<CheatSheetGroup | null>(null);
 	const [title, setTitle] = useState<string>('');
 	const [icon, setIcon] = useState<string>('');
 	const [showModal, setShowModal] = useState<boolean>(false);
+	const [highlighter, setHighlighter] = useState<Highlighter>('js');
 	const [selectedCheatSheet, setSelectedCheatsheet] = useState<null | Cheatsheet>(null);
 
 	const fetchData = useCallback(async () => {
@@ -29,6 +33,7 @@ function CheatsheetComponent() {
 		setIcon(data.icon);
 		setTitle(data?.title);
 		setJsonData(data.groups);
+		setHighlighter(data.highlighter);
 		const darkThemeElement = document.querySelector<HTMLElement>('[data-theme="theme-dark"]');
 		if (darkThemeElement && data.color) {
 			darkThemeElement.style.setProperty('--primary', `#${data.color}`);
@@ -83,8 +88,10 @@ function CheatsheetComponent() {
 								</div> */}
 							</div>
 							<div className="float--right">
+								<HighlighterThemeSelector />
 								<a className="btn btn__inverted btn__md" href="https://github.com/MRmarioruci/seMastery" target='_blank' rel="noreferrer">
 									<span className="material-icons font__20 mright--5">
+									
 										chat_bubble_outline
 									</span>
 									Suggest Changes
@@ -110,7 +117,10 @@ function CheatsheetComponent() {
 					{jsonData?.map((group, idx) => {
 						return (
 							<div className={`tabs__item ${selectedGroup?.title === group.title && 'tabs__item-active'} `} key={`group_${idx}`} onClick={() => setSelectedGroup(group)}>
-								{group.title}
+								<span className="material-icons">
+									{selectedGroup?.title === group.title ? 'radio_button_checked' : 'check_box_outline_blank'}
+								</span>
+								&nbsp;{group.title}
 							</div>
 						)
 					})}
@@ -119,7 +129,7 @@ function CheatsheetComponent() {
 			{ selectedGroup &&
 				<div className='cheatsheets__board'>
 					{selectedGroup?.docs?.map((item:Cheatsheet, idx:number) => {
-						return <CheatsheetItem item={item} key={`group_item_${idx}`} toggleCheatsheet={toggleCheatsheet} />
+						return <CheatsheetItem item={item} key={`group_item_${idx}`} toggleCheatsheet={toggleCheatsheet} highlighter={highlighter} highlighterTheme={state.highlighterTheme} />
 					})}
 				</div>
 			}
@@ -135,7 +145,7 @@ function CheatsheetComponent() {
 					<h5 className="text__muted">Please be patient my lord.</h5>
 				</div>
 			}
-			{showModal && <CheatsheetItemModal item={selectedCheatSheet} toggleCheatsheet={toggleCheatsheet} />}
+			{showModal && <CheatsheetItemModal item={selectedCheatSheet} toggleCheatsheet={toggleCheatsheet} highlighter={highlighter} highlighterTheme={state.highlighterTheme} />}
 		</div>
 	)
 }

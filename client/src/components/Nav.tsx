@@ -1,20 +1,24 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useMemo} from 'react'
 import logo from '../logo.png';
+import { useCustomContext, ThemeType } from '../contexts/theme-context';
 
 function Nav() {
-	const [isLight, setIsLight] = useState(false);
+	const {state, dispatch} = useCustomContext();
+	const isLight = useMemo(() => {
+		return state.theme === 'theme-light';
+	}, [state.theme])
 	const switchTheme = () => {
-		setTheme(isLight ? 'theme-dark' : 'theme-light');
-		setIsLight(!isLight);
+		setAndStoreTheme(isLight? 'theme-dark' : 'theme-light');
 	}
-	const setTheme = (theme:string) => {
+	const setAndStoreTheme = (newTheme:ThemeType) => {
 		const body = document.querySelector('body')!;
-		body.dataset.theme = theme;
-		localStorage.setItem('theme', theme)
+		body.dataset.theme = newTheme;
+		localStorage.setItem('theme', newTheme)
+		dispatch({type: 'SET_THEME', payload: newTheme})
 	}
 	useEffect(() => {
-		const theme = localStorage.getItem('theme') || 'theme-dark';
-		setTheme(theme);
+		const initialTheme: ThemeType = localStorage.getItem('theme') === 'theme-light' ? 'theme-light' : 'theme-dark';
+		setAndStoreTheme(initialTheme);
 	}, [])
 	return (
 		<nav className="nav">

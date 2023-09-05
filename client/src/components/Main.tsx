@@ -54,7 +54,7 @@ function Main() {
 						</button>
 					</div>
 				</div>
-				<div className="main__contents">
+				{/* <div className="main__contents">
 					<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Syntax Cheatsheets</div>
 					<div className="text__center text__muted">
 						Syntax specific cheatsheets for languages and technologies. Useful for quick reference when coding.
@@ -76,7 +76,7 @@ function Main() {
 							Suggest an addition
 						</button>
 					</div>
-				</div>
+				</div> */}
 				<div className="main__contents">
 					<div className="text__center">
 						<Lottie

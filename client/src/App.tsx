@@ -5,10 +5,11 @@ import Nav from './components/Nav';
 import Cheatsheet from "./components/Cheatsheet";
 import Footer from "./components/Footer";
 import Community from "./components/Community";
+import ThemeContextProvider from './contexts/theme-context';
 
 function App() {
 	return (
-		<>
+		<ThemeContextProvider>
 			<BrowserRouter>
 				<Nav />
 				<Routes>
@@ -18,7 +19,7 @@ function App() {
 			</BrowserRouter>
 			<Community />
 			<Footer />
-		</>
+		</ThemeContextProvider>
 	);
 }
 

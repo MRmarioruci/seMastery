@@ -3,10 +3,13 @@ import { Highlight, themes } from "prism-react-renderer";
 import { CheatsheetItemProps } from '../types/index';
 
 function CheatsheetItem(props: CheatsheetItemProps) {
-	const {toggleCheatsheet, item} = props;
+	const {toggleCheatsheet, item, highlighter, highlighterTheme} = props;
+	const highlighterThemeKey = highlighterTheme as keyof typeof themes
+
 	const createMarkup = (htmlContent:string) => {
 		return { __html: htmlContent };
 	};
+	
     return (
         <div className={`card cheatsheets__board-item`}>
 			<div className="cheatsheets__board-itemHeader">
@@ -28,11 +31,11 @@ function CheatsheetItem(props: CheatsheetItemProps) {
 				{item.code && 
 					<pre className="cheatsheets__board-itemBodyCode">
 						<Highlight
-							theme={themes.dracula}
+							theme={themes.}
 							code={item.code}
-							language="tsx"
+							language={highlighter}
 						>
-							{({ className, style, tokens, getLineProps, getTokenProps }) => (
+							{({ style, tokens, getLineProps, getTokenProps }) => (
 								<pre style={style} className="cheatsheets__board-itemBodyCodeInner">
 									{tokens.map((line, i) => (
 									<div key={i} {...getLineProps({ line })}>

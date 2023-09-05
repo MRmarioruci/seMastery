@@ -31,7 +31,7 @@ function CheatsheetItem(props: CheatsheetItemProps) {
 				{item.code && 
 					<pre className="cheatsheets__board-itemBodyCode">
 						<Highlight
-							theme={themes.}
+							theme={themes[highlighterThemeKey]}
 							code={item.code}
 							language={highlighter}
 						>

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './scss/main.scss';
+import 'animate.css';
 import Main from './components/Main';
 import Nav from './components/Nav';
 import Cheatsheet from "./components/Cheatsheet";

@@ -1,0 +1,19 @@
+{
+    "collectionName": "apis",
+    "title": "Apis",
+    "icon": "",
+    "color": "B11C1E",
+    "highlighter": "js",
+    "groups": [
+        {
+            "title": "REST",
+            "docs": [
+                {
+                    "title": "What is Flask, and how does it differ from other web frameworks in Python?",
+                    "description": "Flask is a micro web framework for Python that is minimalistic and lightweight. It is designed to be simple and easy to use, allowing developers to build web applications quickly. Flask is often considered a 'micro' framework because it provides the essential components for web development without imposing strict rules or additional libraries. Unlike some other Python web frameworks like Django, Flask gives developers more flexibility to choose their tools and libraries for various tasks.",
+                    "code": ""
+                }
+            ]
+        }
+    ]
+}

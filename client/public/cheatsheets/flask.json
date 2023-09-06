@@ -1,0 +1,49 @@
+{
+    "collectionName": "flask",
+    "title": "Flask",
+    "icon": "https://api.iconify.design/logos:flask.svg",
+    "color": "1F62EA",
+    "highlighter": "js",
+    "groups": [
+        {
+            "title": "Basics",
+            "docs": [
+                {
+                    "title": "What is Flask, and how does it differ from other web frameworks in Python?",
+                    "description": "Flask is a micro web framework for Python that is minimalistic and lightweight. It is designed to be simple and easy to use, allowing developers to build web applications quickly. Flask is often considered a 'micro' framework because it provides the essential components for web development without imposing strict rules or additional libraries. Unlike some other Python web frameworks like Django, Flask gives developers more flexibility to choose their tools and libraries for various tasks.",
+                    "code": ""
+                },
+                {
+                    "title": "Explain the core components of a Flask application.",
+                    "description": "A Flask application consists of several core components:\n\n1. **Routes**: These define the URL patterns and corresponding functions that handle HTTP requests.\n2. **Views**: These are the functions associated with routes and are responsible for processing requests and returning responses.\n3. **Templates**: Flask uses Jinja2 templates for rendering HTML pages with dynamic content.\n4. **Request and Response Objects**: Flask provides request and response objects to access incoming data and construct outgoing responses.\n5. **Extensions**: Flask allows you to extend its functionality with various extensions for tasks like database integration, form handling, and more.",
+                    "code": ""
+                },
+                {
+                    "title": "What is routing in Flask, and how do you define routes?",
+                    "description": "Routing in Flask refers to the process of mapping URLs to view functions. You define routes using the `@app.route()` decorator.",
+                    "code": "@app.route('/home')\ndef home():\n    return 'Welcome to the home page'\n"
+                },
+                {
+                    "title": "How does Flask handle HTTP methods like GET and POST, and how do you specify them in your routes?",
+                    "description": "Flask handles HTTP methods through the use of decorators. By default, a route is associated with the GET method. To specify other methods, you can use decorators like `@app.route('/endpoint', methods=['POST'])`.",
+                    "code": "\n@app.route('/create', methods=['POST'])\ndef create_post():\n    # Handle POST request here\n"
+                },
+                {
+                    "title": "What is a Flask blueprint, and why might you use it in your application?",
+                    "description": "A Flask blueprint is a way to organize and group related routes and views within a Flask application. Blueprints allow you to create modular and reusable components. This is particularly useful for large applications where you want to break your application into smaller, manageable pieces.",
+                    "code": "\nfrom flask import Blueprint\n\nauth_bp = Blueprint('auth', __name__, url_prefix='/auth')\n\n@auth_bp.route('/login')\ndef login():\n    return 'Login Page'\n\n# Register the blueprint in your app\napp.register_blueprint(auth_bp)\n"
+                },
+                {
+                    "title": "Explain how Flask manages request and response objects.",
+                    "description": "Flask manages request and response objects through the `request` and `response` global objects. The `request` object allows you to access data from incoming HTTP requests, such as form data, query parameters, and headers.",
+                    "code": ""
+                },
+                {
+                    "title": "What is a decorator in Flask, and how is it used? Provide an example.",
+                    "description": "In Flask, a decorator is a special function that is used to modify the behavior of another function. Decorators are prefixed with the `@` symbol and are commonly used with route functions to define URL patterns.",
+                    "code": "\n@app.route('/example')\ndef example_route():\n    return 'This is an example route'\n"
+                }
+            ]
+        }
+    ]
+}

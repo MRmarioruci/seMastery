@@ -5,6 +5,21 @@ export const menu = [
 		icon: '',
 	},
 	{
+		title: 'React.js',
+		href: 'react',
+		icon: '',
+	},
+	{
+		title: 'Flask',
+		href: 'flask',
+		icon: '',
+	},
+	{
+		title: 'APIs',
+		href: 'apis',
+		icon: '',
+	},
+	{
 		title: 'Typescript',
 		href: 'typescript',
 		icon: '',
@@ -50,17 +65,7 @@ export const menu = [
 		icon: '',
 	},
 	{
-		title: 'React.js',
-		href: 'react',
-		icon: '',
-	},
-	{
 		title: 'HTML',
-		href: 'html',
-		icon: '',
-	},
-	{
-		title: 'APIs',
 		href: 'html',
 		icon: '',
 	}

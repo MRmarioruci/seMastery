@@ -69,8 +69,8 @@ function CheatsheetComponent() {
 						{/* <h3>{cheatsheet.pageTitle}</h3>
 						<h5 className='text__muted'>{cheatsheet.pageSubtitle}</h5> */}
 						<div className="flex flex__row">
-							{icon && <img alt="Icon" src={icon} width={30}/>}
-							{title && <h3>{title}</h3>}
+							{icon && <img alt="Icon" src={icon} width={40}/>}
+							{title && <h3 className="mtop--10">{title}</h3>}
 						</div>
 						<div className='flex flex__row mtop--20'>
 							<div>
@@ -129,7 +129,11 @@ function CheatsheetComponent() {
 			{ selectedGroup &&
 				<div className='cheatsheets__board'>
 					{selectedGroup?.docs?.map((item:Cheatsheet, idx:number) => {
-						return <CheatsheetItem item={item} key={`group_item_${idx}`} toggleCheatsheet={toggleCheatsheet} highlighter={highlighter} highlighterTheme={state.highlighterTheme} />
+						return (
+							<div className="animate__animated animate__fadeIn" style={{ animationDelay: `${idx * 30}ms` }} key={`group_item_${idx}`}>
+								<CheatsheetItem item={item} toggleCheatsheet={toggleCheatsheet} highlighter={highlighter} highlighterTheme={state.highlighterTheme} />
+							</div>
+						)
 					})}
 				</div>
 			}

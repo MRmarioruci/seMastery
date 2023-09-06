@@ -8,7 +8,7 @@ export type CheatSheetGroup = {
     "title": string,
     "docs": Cheatsheet[]
 }
-export type Highlighter = 'js' | 'tsx'
+export type Highlighter = 'js' | 'tsx' | 'py'
 export type CheatsheetDoc = {
     "collectionName": string,
 	"title": string,

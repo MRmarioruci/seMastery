@@ -91,6 +91,18 @@
 					"description": "Rest: Allows a function to accept indefinite amount oa parameter, Spread: Allows iterables to be expanded into single arguments/elements",
 					"image": "",
 					"code": "// Rest \nfunction sum(...numbers) {\n  return numbers.reduce((total, num) => total + num, 0);\n}\n\nconsole.log(sum(1, 2, 3, 4, 5)); // 15\n// Spread operator \nconst arr1 = [1, 2, 3];\nconst arr2 = [4, 5, 6];\nconst combinedArray = [...arr1, ...arr2]; // Combines the arrays\nconsole.log(combinedArray); // [1, 2, 3, 4, 5, 6]\n"
+				},
+				{
+					"title": "Callback function",
+					"description": "A callback function is a function that is passed to another function as an argument and is executed after some operation has been completed",
+					"image": "",
+					"code": "function modifyArray(arr, callback) {\n  // do something to arr here\n  arr.push(100);\n  // then execute the callback function that was passed\n  callback();\n}\n\nconst arr = [1, 2, 3, 4, 5];\nmodifyArray(arr, () => {\n  console.log('array has been modified', arr);\n});\n"
+				},
+				{
+					"title": "Event bubbling",
+					"description": "Event bubbling is the concept in which an event triggers at the deepest possible element, and triggers on parent elements in nesting order. As a result, when clicking on a child element one may exhibit the handler of the parent activating.",
+					"image": "",
+					"code": ""
 				}
 			]
 		},
@@ -221,6 +233,21 @@
 					"title": "filter()",
 					"description": "Creates a new array with all elements that pass a provided test. Useful for selectively extracting elements based on a condition.",
 					"code": "const numbers = [1, 2, 3, 4, 5];\nconst evenNumbers = numbers.filter((number) => number % 2 === 0);\n// Result: evenNumbers is [2, 4]"
+				},
+				{
+					"title": "reduce()",
+					"description": "Applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.",
+					"code": "const array = [1, 2, 3, 4, 5];\n\nconst sum = array.reduce(function(accumulator, currentValue) {\n    return accumulator + currentValue;\n}, 0);\n\n// The 'sum' variable now contains the total sum of all elements in 'array'."
+				},
+				{
+					"title": "some()",
+					"description": "Checks if at least one element in the array satisfies a provided condition.",
+					"code": "const array = [10, 20, 30, 40, 50];\n\nconst isGreaterThan25 = array.some(function(element) {\n    return element > 25;\n});\n\n// 'isGreaterThan25' is true because at least one element (30, 40, and 50) is greater than 25."
+				},
+				{
+					"title": "every()",
+					"description": "Checks if all elements in the array satisfy a provided condition.",
+					"code": "const array = [5, 10, 15, 20, 25];\n\nconst isMultipleOf5 = array.every(function(element) {\n    return element % 5 === 0;\n});\n\n// 'isMultipleOf5' is true because all elements are multiples of 5."
 				}
 			]
 		}

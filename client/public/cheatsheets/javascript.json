@@ -112,7 +112,7 @@
 				{
 					"title": "What is a Promise in JavaScript?",
 					"description": "A Promise is a JavaScript object representing the eventual completion or failure of an asynchronous operation. It provides a way to handle asynchronous operations more easily and avoid callback hell.",
-					"code": ""
+					"code": "// Create a function that returns a Promise\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    // Simulate an asynchronous operation (e.g., fetching data from a server)\n    setTimeout(() => {\n      const data = { message: \"Data fetched successfully\" };\n      // Resolve the Promise with the data\n      resolve(data);\n      \n      // Uncomment the following line to simulate an error:\n      // reject(\"Error: Unable to fetch data\");\n    }, 2000); // Simulate a 2-second delay\n  });\n}\n\n// Use the Promise\nfetchData()\n  .then((result) => {\n    console.log(result.message); // Data fetched successfully\n  })\n  .catch((error) => {\n    console.error(error); // Handle errors here\n  });"
 				},
 				{
 					"title": "How do you create a Promise in JavaScript?",

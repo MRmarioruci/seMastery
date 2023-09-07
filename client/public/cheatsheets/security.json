@@ -1,0 +1,24 @@
+{
+	"collectionName": "securityCheatsheet",
+	"title": "Security",
+	"icon": "https://api.iconify.design/fluent-emoji-high-contrast:locked-with-key.svg",
+	"color": "08C052",
+	"highlighter": "tsx",
+	"groups": [
+		{
+			"title": "General",
+			"docs": [
+				{
+					"title": "Authentication and Authorization",
+					"description": "How do you handle user authentication securely? What authorization mechanisms are in place to control user access to different parts of the application? Do you use strong password hashing techniques like bcrypt?",
+					"code": ""
+				},
+                {
+					"title": "Data Protection",
+					"description": "How is sensitive user data (e.g., passwords, personal information) stored and encrypted? Are you using HTTPS to secure data transmission between the client and server?",
+					"code": ""
+				}
+			]
+		}
+	]
+}

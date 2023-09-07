@@ -9,39 +9,74 @@
             "title": "Basics",
             "docs": [
                 {
-                    "title": "What is Flask, and how does it differ from other web frameworks in Python?",
-                    "description": "Flask is a micro web framework for Python that is minimalistic and lightweight. It is designed to be simple and easy to use, allowing developers to build web applications quickly. Flask is often considered a 'micro' framework because it provides the essential components for web development without imposing strict rules or additional libraries. Unlike some other Python web frameworks like Django, Flask gives developers more flexibility to choose their tools and libraries for various tasks.",
+                    "title": "What is Flask, and how does it differ from other web frameworks?",
+                    "description": "Flask is a micro web framework for Python that is lightweight and designed to be simple to use. Unlike full-stack frameworks like Django, Flask is minimalistic and gives developers more flexibility in choosing components to build their applications.",
                     "code": ""
                 },
                 {
-                    "title": "Explain the core components of a Flask application.",
-                    "description": "A Flask application consists of several core components:\n\n1. **Routes**: These define the URL patterns and corresponding functions that handle HTTP requests.\n2. **Views**: These are the functions associated with routes and are responsible for processing requests and returning responses.\n3. **Templates**: Flask uses Jinja2 templates for rendering HTML pages with dynamic content.\n4. **Request and Response Objects**: Flask provides request and response objects to access incoming data and construct outgoing responses.\n5. **Extensions**: Flask allows you to extend its functionality with various extensions for tasks like database integration, form handling, and more.",
+                    "title": "Explain the basic structure of a Flask application.",
+                    "description": "A Flask application typically consists of a main script (app.py) where you create an instance of the Flask class, define routes, and configure the application. It also includes templates for rendering HTML, static files for assets like CSS and JavaScript, and optionally, a folder for database models.",
                     "code": ""
                 },
                 {
-                    "title": "What is routing in Flask, and how do you define routes?",
-                    "description": "Routing in Flask refers to the process of mapping URLs to view functions. You define routes using the `@app.route()` decorator.",
-                    "code": "@app.route('/home')\ndef home():\n    return 'Welcome to the home page'\n"
-                },
-                {
-                    "title": "How does Flask handle HTTP methods like GET and POST, and how do you specify them in your routes?",
-                    "description": "Flask handles HTTP methods through the use of decorators. By default, a route is associated with the GET method. To specify other methods, you can use decorators like `@app.route('/endpoint', methods=['POST'])`.",
-                    "code": "\n@app.route('/create', methods=['POST'])\ndef create_post():\n    # Handle POST request here\n"
-                },
-                {
-                    "title": "What is a Flask blueprint, and why might you use it in your application?",
-                    "description": "A Flask blueprint is a way to organize and group related routes and views within a Flask application. Blueprints allow you to create modular and reusable components. This is particularly useful for large applications where you want to break your application into smaller, manageable pieces.",
-                    "code": "\nfrom flask import Blueprint\n\nauth_bp = Blueprint('auth', __name__, url_prefix='/auth')\n\n@auth_bp.route('/login')\ndef login():\n    return 'Login Page'\n\n# Register the blueprint in your app\napp.register_blueprint(auth_bp)\n"
-                },
-                {
-                    "title": "Explain how Flask manages request and response objects.",
-                    "description": "Flask manages request and response objects through the `request` and `response` global objects. The `request` object allows you to access data from incoming HTTP requests, such as form data, query parameters, and headers.",
+                    "title": "What is a route in Flask, and how do you define one?",
+                    "description": "In Flask, a route is a URL pattern associated with a Python function. You define routes using the `@app.route()` decorator, specifying the URL path as an argument. When a user accesses that URL, Flask calls the associated function, and its return value is often displayed as a web page.",
                     "code": ""
                 },
                 {
-                    "title": "What is a decorator in Flask, and how is it used? Provide an example.",
-                    "description": "In Flask, a decorator is a special function that is used to modify the behavior of another function. Decorators are prefixed with the `@` symbol and are commonly used with route functions to define URL patterns.",
-                    "code": "\n@app.route('/example')\ndef example_route():\n    return 'This is an example route'\n"
+                    "title": "How can you pass variables from a Flask route to a template?",
+                    "description": "You can pass variables from a Flask route to a template by including them as arguments in the `render_template()` function. Inside the template, you can access these variables using double curly braces, e.g., `{{ variable_name }}`.",
+                    "code": ""
+                },
+                {
+                    "title": "What is Flask-WTF, and why would you use it in a Flask application?",
+                    "description": "Flask-WTF is an extension for Flask that simplifies working with web forms. It provides tools for form creation, validation, and rendering. You would use Flask-WTF to handle forms in your Flask application, making it easier to manage user input.",
+                    "code": ""
+                },
+                {
+                    "title": "What is the purpose of the Jinja2 template engine in Flask, and how does it work?",
+                    "description": "Jinja2 is a template engine used in Flask for rendering dynamic content in HTML templates. It allows you to insert variables and control structures (like loops and conditionals) into your templates. Flask uses Jinja2 to generate HTML responses, making it easy to create dynamic web pages.",
+                    "code": ""
+                },
+                {
+                    "title": "How can you handle form submissions in Flask?",
+                    "description": "You can handle form submissions in Flask by defining a route that listens for POST requests, typically using the `@app.route()` decorator with the `methods=['POST']` argument. You can then access form data using `request.form` and perform validation and processing.",
+                    "code": ""
+                },
+                {
+                    "title": "Explain the concept of middleware in Flask. Provide an example of middleware usage.",
+                    "description": "Middleware in Flask is a series of functions or classes that process incoming requests or outgoing responses before they reach the view function or after they leave it. An example of middleware usage is adding custom headers to responses or performing authentication checks before routing to a view function.",
+                    "code": ""
+                },
+                {
+                    "title": "What is the purpose of the Flask extension called SQLAlchemy, and how can you use it for database operations?",
+                    "description": "Flask-SQLAlchemy is an extension that integrates SQLAlchemy, a powerful Object-Relational Mapping (ORM) library, with Flask. It simplifies database operations by providing a way to define models as Python classes and perform CRUD operations on the database using Python code.",
+                    "code": ""
+                },
+                {
+                    "title": "Describe how to set up error handling and custom error pages in Flask.",
+                    "description": "To set up error handling in Flask, you can define error handlers using `@app.errorhandler(error_code)` decorator. You can create custom error pages by rendering templates or returning JSON responses in these error handler functions. For example, `@app.errorhandler(404)` for handling 404 Not Found errors.",
+                    "code": ""
+                },
+                {
+                    "title": "What is Flask Blueprints, and why would you use them in your application?",
+                    "description": "Flask Blueprints are a way to organize and modularize your Flask application by grouping related routes and views into separate modules. They are helpful for creating large-scale applications with multiple components, making it easier to manage and maintain the codebase.",
+                    "code": ""
+                },
+                {
+                    "title": "How can you manage sessions in Flask?",
+                    "description": "You can manage sessions in Flask using the `session` object provided by the `Flask-Session` or `Flask-Session-Cache` extensions. This allows you to store and retrieve session data for users as they interact with your application, providing a way to maintain user-specific state.",
+                    "code": ""
+                },
+                {
+                    "title": "Explain the use of Flask-Security for authentication and authorization.",
+                    "description": "Flask-Security is an extension for Flask that provides authentication and authorization features out of the box. It allows you to easily handle user registration, login, password management, and role-based access control in your Flask application.",
+                    "code": ""
+                },
+                {
+                    "title": "What is the role of the Flask CLI, and how can you create custom CLI commands?",
+                    "description": "The Flask CLI (Command Line Interface) provides a way to interact with your Flask application from the command line. You can create custom CLI commands by defining functions and decorating them with `@app.cli.command`. These commands can be used for tasks like database migrations, data seeding, and more.",
+                    "code": ""
                 }
             ]
         }

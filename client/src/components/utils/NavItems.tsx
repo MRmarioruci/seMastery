@@ -68,5 +68,10 @@ export const menu = [
 		title: 'HTML',
 		href: 'html',
 		icon: '',
-	}
+	},
+	{
+		title: 'Security',
+		href: 'security',
+		icon: '',
+	},
 ]

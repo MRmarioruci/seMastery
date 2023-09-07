@@ -15,11 +15,11 @@ function CheatsheetItemModal(props: CheatsheetModalItemProps) {
 		const { cropPositionTop, cropPositionLeft, cropWidth, cropHeigth } = {
 			cropPositionTop: 0,
 			cropPositionLeft: 0,
-			cropWidth: myRef.current.offsetWidth,
-			cropHeigth: myRef.current.offsetHeight
+			cropWidth: myRef.current.offsetWidth * 2,
+			cropHeigth: myRef.current.offsetHeight * 2
 		};
 		
-		html2canvas(myRef.current).then(canvas => {
+		html2canvas(myRef.current, { scale: 2 }).then(canvas => {
 			let croppedCanvas = document.createElement("canvas");
 			let croppedCanvasContext = croppedCanvas.getContext("2d");
 			
@@ -30,8 +30,8 @@ function CheatsheetItemModal(props: CheatsheetModalItemProps) {
 			
 			const a = document.createElement("a");
 			a.href = croppedCanvas.toDataURL();
-			console.log(item);
-			a.download = "receipt.png";
+
+			a.download = `${item?.title!.replace(/[\W\s]+/g, '_')}.png`;
 			a.click();
 		})
 		.finally(() => {

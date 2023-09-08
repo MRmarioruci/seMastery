@@ -1,6 +1,6 @@
 //import mainAnimation from '../animations/main.json';
 //import Lottie from 'react-lottie-player'
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { menu } from './utils/NavItems';
 import rocketAnimation from '../animations/rocket.json';
@@ -24,7 +24,16 @@ function CheatsheetComponent() {
 	const [icon, setIcon] = useState<string>('');
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const [highlighter, setHighlighter] = useState<Highlighter>('js');
+	const [themeColor, setThemeColor] = useState<string | null | undefined>(null);
 	const [selectedCheatSheet, setSelectedCheatsheet] = useState<null | Cheatsheet>(null);
+
+	useMemo(() => {
+		const darkThemeElement = document.querySelector<HTMLElement>('[data-theme]');
+		if (darkThemeElement && themeColor) {
+			darkThemeElement.style.setProperty('--primary', `#${themeColor}`);
+			darkThemeElement.style.setProperty('--primary-rgb', hexToRGB(themeColor));
+		}
+	}, [themeColor])
 
 	const fetchData = useCallback(async () => {
 		const data: CheatsheetDoc = await getCheatsheet(id || '');
@@ -34,11 +43,8 @@ function CheatsheetComponent() {
 		setTitle(data?.title);
 		setJsonData(data.groups);
 		setHighlighter(data.highlighter);
-		const darkThemeElement = document.querySelector<HTMLElement>('[data-theme="theme-dark"]');
-		if (darkThemeElement && data.color) {
-			darkThemeElement.style.setProperty('--primary', `#${data.color}`);
-			darkThemeElement.style.setProperty('--primary-rgb', hexToRGB(data.color));
-		}
+		setThemeColor(data.color);
+		
 	}, [id]);
 	const goBack = () => {
 		window.history.back();

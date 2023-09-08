@@ -2,7 +2,7 @@
     "collectionName": "flask",
     "title": "Flask",
     "icon": "https://api.iconify.design/logos:flask.svg",
-    "color": "1F62EA",
+    "color": "CB66A3",
     "highlighter": "js",
     "groups": [
         {
@@ -19,19 +19,19 @@
                     "code": ""
                 },
                 {
-                    "title": "What is a route in Flask, and how do you define one?",
-                    "description": "In Flask, a route is a URL pattern associated with a Python function. You define routes using the `@app.route()` decorator, specifying the URL path as an argument. When a user accesses that URL, Flask calls the associated function, and its return value is often displayed as a web page.",
+                    "title": "Basic setup",
+                    "description": "",
+                    "code": "from flask import Flask\n \n # Create a Flask application instance\n app = Flask(__name__)\n \n # Define a route and a view function\n @app.route('/')\n def hello_world():\n      return 'Hello, World!'\n \n # Run the Flask app if this script is the main program\n if __name__ == '__main__':\n    app.run()\n"
+                },
+                {
+                    "title": "Routing",
+                    "description": "A fundamental concept in the Flask web framework that allows you to map URLs (Uniform Resource Locators) to specific functions in your Python application. Routing helps determine how your application responds to different HTTP requests (e.g., GET, POST, PUT, DELETE) and the URL patterns it should match",
                     "code": ""
                 },
                 {
-                    "title": "How can you pass variables from a Flask route to a template?",
-                    "description": "You can pass variables from a Flask route to a template by including them as arguments in the `render_template()` function. Inside the template, you can access these variables using double curly braces, e.g., `{{ variable_name }}`.",
-                    "code": ""
-                },
-                {
-                    "title": "What is Flask-WTF, and why would you use it in a Flask application?",
+                    "title": "Flask-WTF",
                     "description": "Flask-WTF is an extension for Flask that simplifies working with web forms. It provides tools for form creation, validation, and rendering. You would use Flask-WTF to handle forms in your Flask application, making it easier to manage user input.",
-                    "code": ""
+                    "code": "from flask import Flask, render_template, request, flash, redirect, url_for; ... (your Python code here)"
                 },
                 {
                     "title": "What is the purpose of the Jinja2 template engine in Flask, and how does it work?",
@@ -39,44 +39,64 @@
                     "code": ""
                 },
                 {
-                    "title": "How can you handle form submissions in Flask?",
-                    "description": "You can handle form submissions in Flask by defining a route that listens for POST requests, typically using the `@app.route()` decorator with the `methods=['POST']` argument. You can then access form data using `request.form` and perform validation and processing.",
-                    "code": ""
-                },
-                {
-                    "title": "Explain the concept of middleware in Flask. Provide an example of middleware usage.",
+                    "title": "Middleware",
                     "description": "Middleware in Flask is a series of functions or classes that process incoming requests or outgoing responses before they reach the view function or after they leave it. An example of middleware usage is adding custom headers to responses or performing authentication checks before routing to a view function.",
-                    "code": ""
+                    "code": "from flask import Flask, request\n\napp = Flask(__name__)\n\n# Example middleware (before_request)\n@app.before_request\ndef before_request():\n    # Perform actions before each request, e.g., logging\n    print(f'Before Request - Path: {request.path}')\n    \n# Example middleware (after_request)\n@app.after_request\ndef after_request(response):\n    # Perform actions after each request, e.g., modifying the response\n    print(f'After Request - Status Code: {response.status_code}')\n    return response\n    \n# Route for demonstration\n@app.route('/')\ndef hello_world():\n    return 'Hello, World!'\n    \nif __name__ == '__main__':\n    app.run(debug=True)\n"
                 },
                 {
-                    "title": "What is the purpose of the Flask extension called SQLAlchemy, and how can you use it for database operations?",
+                    "title": "Flask-SQLAlchemy",
                     "description": "Flask-SQLAlchemy is an extension that integrates SQLAlchemy, a powerful Object-Relational Mapping (ORM) library, with Flask. It simplifies database operations by providing a way to define models as Python classes and perform CRUD operations on the database using Python code.",
                     "code": ""
                 },
                 {
-                    "title": "Describe how to set up error handling and custom error pages in Flask.",
+                    "title": "Error handling",
                     "description": "To set up error handling in Flask, you can define error handlers using `@app.errorhandler(error_code)` decorator. You can create custom error pages by rendering templates or returning JSON responses in these error handler functions. For example, `@app.errorhandler(404)` for handling 404 Not Found errors.",
-                    "code": ""
+                    "code": "from flask import Flask, render_template, request, abort, redirect, url_for\n\napp = Flask(__name__)\n\n# Custom error handling for a specific route\n@app.errorhandler(404)\ndef page_not_found(error):\n    return render_template('404.html'), 404\n\n@app.route('/')\ndef home():\n    return 'Hello, World!'\n\n@app.route('/about')\ndef about():\n    return 'About page'\n\n# Simulate a route that raises a custom error\n@app.route('/custom_error')\ndef custom_error():\n    # Simulate a custom error condition\n    abort(500)  # Internal Server Error\n\nif __name__ == '__main__':\n    app.run(debug=True)\n"
                 },
                 {
-                    "title": "What is Flask Blueprints, and why would you use them in your application?",
+                    "title": "Flask Blueprints",
                     "description": "Flask Blueprints are a way to organize and modularize your Flask application by grouping related routes and views into separate modules. They are helpful for creating large-scale applications with multiple components, making it easier to manage and maintain the codebase.",
-                    "code": ""
+                    "code": "from flask import Flask, Blueprint, render_template\n\napp = Flask(__name__)\n\n# Create a blueprint\nsample_blueprint = Blueprint('sample', __name__)\n\n# Define routes within the blueprint\n@sample_blueprint.route('/')\ndef index():\n    return 'Sample Blueprint Index'\n\n@sample_blueprint.route('/about')\ndef about():\n    return 'About Us (Sample Blueprint)'\n\n# Register the blueprint with the Flask app\napp.register_blueprint(sample_blueprint, url_prefix='/sample')\n\nif __name__ == '__main__':\n    app.run(debug=True)\n"
                 },
                 {
-                    "title": "How can you manage sessions in Flask?",
+                    "title": "Sessions",
                     "description": "You can manage sessions in Flask using the `session` object provided by the `Flask-Session` or `Flask-Session-Cache` extensions. This allows you to store and retrieve session data for users as they interact with your application, providing a way to maintain user-specific state.",
-                    "code": ""
+                    "code": "from flask import Flask, request, session\n\napp = Flask(__name__)\n\n# Set a secret key for session security (change this to a secure value)\napp.secret_key = 'your_secret_key'\n\n# Route to set a session variable\n@app.route('/set_session/<value>')\ndef set_session(value):\n    session['username'] = value\n    return f'Session variable username set to {value}'\n\n# Route to retrieve and display the session variable\n@app.route('/get_session')\ndef get_session():\n    username = session.get('username')\n    if username is None:\n        return 'Session variable username is not set.'\n    else:\n        return f'Session variable username is set to {username}'\n\n# Route to clear the session\n@app.route('/clear_session')\ndef clear_session():\n    session.pop('username', None)\n    return 'Session cleared'\n\nif __name__ == '__main__':\n    app.run(debug=True)\n"
                 },
                 {
-                    "title": "Explain the use of Flask-Security for authentication and authorization.",
+                    "title": "Flask-Security",
                     "description": "Flask-Security is an extension for Flask that provides authentication and authorization features out of the box. It allows you to easily handle user registration, login, password management, and role-based access control in your Flask application.",
-                    "code": ""
+                    "code": "from flask import Flask\nfrom flask_sqlalchemy import SQLAlchemy\nfrom flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required\n\napp = Flask(__name__)\napp.config['SECRET_KEY'] = 'your_secret_key'  # Change this to a secure value\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'  # Change this to your database URI\ndb = SQLAlchemy(app)\n\n# Define User and Role models\nclass Role(db.Model, RoleMixin):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), unique=True)\n    description = db.Column(db.String(255))\n\nclass User(db.Model, UserMixin):\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(255), unique=True)\n    password = db.Column(db.String(255))\n    active = db.Column(db.Boolean)\n    roles = db.relationship('Role', secondary='user_roles', backref=db.backref('users', lazy='dynamic'))\n\n# Create database tables\ndb.create_all()\n\n# Create an instance of Flask-Security\nuser_datastore = SQLAlchemyUserDatastore(db, User, Role)\nsecurity = Security(app, user_datastore)\n\n# Routes\n@app.route('/')\ndef index():\n    return 'Home Page'\n\n@app.route('/protected')\n@login_required\ndef protected():\n    return 'Protected Page'\n\nif __name__ == '__main__':\n    app.run(debug=True)\n"
                 },
                 {
                     "title": "What is the role of the Flask CLI, and how can you create custom CLI commands?",
                     "description": "The Flask CLI (Command Line Interface) provides a way to interact with your Flask application from the command line. You can create custom CLI commands by defining functions and decorating them with `@app.cli.command`. These commands can be used for tasks like database migrations, data seeding, and more.",
                     "code": ""
+                }
+            ]
+        },
+        {
+            "title": "Routing",
+            "docs": [
+                {
+                    "title": "Defining Routes",
+                    "description": "You use decorators provided by Flask, such as @app.route(), to define routes in your application. These decorators specify which URL pattern should trigger a particular Python function",
+                    "code": "from flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return 'Hello, World!'\n\n@app.route('/about')\ndef about():\n    return 'About page'\n\n@app.route('/contact')\ndef contact():\n    return 'Contact us'\n"
+                },
+                {
+                    "title": "Dynamic Routes",
+                    "description": "Flask allows you to define dynamic routes that can accept variable values. You can specify dynamic parts of a URL by enclosing them in angle brackets ",
+                    "code": "@app.route('/user/<username>')\ndef show_user(username):\n    return f'User Profile: {username}'\n"
+                },
+                {
+                    "title": "HTTP Methods",
+                    "description": "You can specify which HTTP methods a route should respond to using the methods argument in the @app.route() decorator. For example, to handle both GET and POST requests",
+                    "code": "@app.route('/submit', methods=['GET', 'POST'])\ndef submit_form():\n    if request.method == 'POST':\n        # Handle form submission\n    else:\n        # Display the form\n"
+                },
+                {
+                    "title": "URL Building",
+                    "description": "Flask provides a convenient way to generate URLs in your templates and code using the url_for() function. This function takes the name of the route and any variables it expects and generates the corresponding URL.",
+                    "code": "from flask import url_for\n\nurl = url_for('home')\n"
                 }
             ]
         }

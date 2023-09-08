@@ -220,6 +220,41 @@
 				}
 				
 			]
+		},
+		{
+			"title": "Context API Setup",
+			"docs": [
+				{
+					"title": "Setup Context",
+					"code": "import React, { createContext, useReducer, useContext } from 'react';\nimport rootReducer from './rootReducer'; // Import the combined rootReducer\n\n// Create the context\nconst GlobalStateContext = createContext();\n\n// Initial state\nconst initialState = {\n  counter: { count: 0 },\n  user: { isLoggedIn: false, username: null },\n};\n\n// Create the context provider\nexport const GlobalStateProvider = ({ children }) => {\n  const [state, dispatch] = useReducer(rootReducer, initialState);\n  \n  return (\n    <GlobalStateContext.Provider value={{ state, dispatch }}>\n      {children}\n    </GlobalStateContext.Provider>\n  );\n};\n\n// Custom hook to access the global state\nexport const useGlobalState = () => {\n  const context = useContext(GlobalStateContext);\n  if (!context) {\n    throw new Error('useGlobalState must be used within a GlobalStateProvider');\n  }\n  return context;\n};\n",
+					"description": "Create a file where you define your global context. Context can be separated into multiple files as well, this approach follows a global context file and a custom hook for useContext."
+				},
+				{
+					"title": "Reducer Setup",
+					"code": "// counterReducer.js\nconst counterReducer = (state, action) => {\n  switch (action.type) {\n    case 'INCREMENT':\n      return { ...state, count: state.count + 1 };\n    case 'DECREMENT':\n      return { ...state, count: state.count - 1 };\n    default:\n      return state;\n  }\n};\n\nexport default counterReducer;\n\n// userReducer.js\nconst userReducer = (state, action) => {\n  switch (action.type) {\n    case 'LOGIN':\n      return { ...state, isLoggedIn: true, username: action.payload };\n    case 'LOGOUT':\n      return { ...state, isLoggedIn: false, username: null };\n    default:\n      return state;\n  }\n};\n\nexport default userReducer;",
+					"description": "Create your reducer functions into separate files."
+				},
+				{
+					"title": "Combine Reducers",
+					"code": "// rootReducer.js\nimport counterReducer from './counterReducer';\nimport userReducer from './userReducer';\nconst rootReducer = (state, action) => ({\n\tcounter: counterReducer(state.counter, action),\n\tuser: userReducer(state.user, action)\n});\n\nexport default rootReducer;",
+					"description": "Combine all the reducers into a single root reducer"
+				},
+				{
+					"title": "Actions",
+					"code": "// actions.js\nexport const increment = () => {\n  return { type: 'INCREMENT' };\n};\n\nexport const decrement = () => {\n  return { type: 'DECREMENT' };\n};\n\nexport const login = (username) => {\n  return { type: 'LOGIN', payload: username };\n};\n\nexport const logout = () => {\n  return { type: 'LOGOUT' };\n};",
+					"description": "Define separate action functions for different actions related to your global state. For example, create an actions.js file"
+				},
+				{
+					"title": "Wrap Your App with the Provider",
+					"code": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport App from './App';\nimport { GlobalStateProvider } from './GlobalState'; // Import the provider\n\nReactDOM.render(\n  <GlobalStateProvider>\n    <App />\n  </GlobalStateProvider>,\n  document.getElementById('root')\n);",
+					"description": "Wrap your components or the <App /> component with the GlobalStateProvider in order to have access to the global state."
+				},
+				{
+					"title": "Use in your components",
+					"code": "import React from 'react';\nimport { useGlobalState } from './GlobalState'; // Import the custom hook\nimport { increment, decrement, login, logout } from './actions'; // Import the actions\n\nfunction Counter() {\n  const { state, dispatch } = useGlobalState();\n  \n  return (\n    <div>\n      <p>Count: {state.counter.count}</p>\n      <button onClick={() => dispatch(increment())}>Increment</button>\n      <button onClick={() => dispatch(decrement())}>Decrement</button>\n    </div>\n  );\n}\n\nfunction User() {\n  const { state, dispatch } = useGlobalState();\n  \n  return (\n    <div>\n      {state.user.isLoggedIn ? (\n        <div>\n          <p>Welcome, {state.user.username}!</p>\n          <button onClick={() => dispatch(logout())}>Logout</button>\n        </div>\n     ) : (\n        <div>\n          <p>You are not logged in.</p>\n          <button onClick={() => dispatch(login('John'))}>Login</button>\n        </div>\n      )}\n    </div>\n  );\n}\n",
+					"description": ""
+				}
+			]
 		}
 	]
 }

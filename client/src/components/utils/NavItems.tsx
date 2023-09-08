@@ -74,4 +74,9 @@ export const menu = [
 		href: 'security',
 		icon: '',
 	},
+	{
+		title: 'Jest',
+		href: 'jest',
+		icon: '',
+	},
 ]

@@ -5,7 +5,6 @@ import { CheatsheetItemProps } from '../types/index';
 function CheatsheetItem(props: CheatsheetItemProps) {
 	const {toggleCheatsheet, item, highlighter, highlighterTheme} = props;
 	const highlighterThemeKey = highlighterTheme as keyof typeof themes
-
 	const createMarkup = (htmlContent:string) => {
 		return { __html: htmlContent };
 	};

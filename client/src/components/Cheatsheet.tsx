@@ -12,6 +12,7 @@ import CheatsheetItemModal from './CheatsheetItemModal';
 import { Cheatsheet, CheatsheetDoc, CheatSheetGroup, Highlighter, ToggleCheatsheetFunction } from '../types/index';
 import { hexToRGB } from '../utils/color';
 import HighlighterThemeSelector from './HighlighterThemeSelector';
+import LayoutSelector from './LayoutSelector';
 import { useCustomContext } from '../contexts/theme-context';
 
 function CheatsheetComponent() {
@@ -102,6 +103,7 @@ function CheatsheetComponent() {
 									</span>
 									Suggest Changes
 								</a>
+								<LayoutSelector />
 								{/* <div className="btn btn__primary btn__md" href="https://github.com/MRmarioruci/seMastery" target='_blank'>
 									<span className="material-icons font__20 mright--5">
 										add
@@ -133,7 +135,7 @@ function CheatsheetComponent() {
 				</div>
 			}
 			{ selectedGroup &&
-				<div className='cheatsheets__board'>
+				<div className='cheatsheets__board' style={{columns: state.columns}}>
 					{selectedGroup?.docs?.map((item:Cheatsheet, idx:number) => {
 						return (
 							<div className="animate__animated animate__fadeIn" style={{ animationDelay: `${idx * 30}ms` }} key={`group_item_${idx}`}>

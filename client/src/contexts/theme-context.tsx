@@ -6,22 +6,34 @@ type ProviderProps = {
 }
 type State = {
 	theme: ThemeType,
-	highlighterTheme: string
+	highlighterTheme: string,
+	columns: number
 }
-type StateAction = {type: 'SET_THEME', payload: ThemeType} | {type: 'SET_HIGHLIGHT_THEME', payload: string}
-type ThemeContext = { state: State; dispatch: React.Dispatch<StateAction> } | undefined;
+type StateAction = {
+	type: 'SET_THEME',
+	payload: ThemeType
+} | {
+	type: 'SET_HIGHLIGHT_THEME',
+	payload: string
+} | {
+	type: 'SET_COLUMNS',
+	payload: number
+}
+type ThemeContextType = { state: State; dispatch: React.Dispatch<StateAction> } | undefined;
 
 const reducer = (state: State, action: StateAction): State => {
 	switch (action.type) {
 		case 'SET_THEME':
-		return { ...state, theme: action.payload };
+			return { ...state, theme: action.payload };
 		case 'SET_HIGHLIGHT_THEME':
-		return { ...state, highlighterTheme: action.payload };
+			return { ...state, highlighterTheme: action.payload };
+		case 'SET_COLUMNS':
+			return { ...state, columns: action.payload };
 		default:
-		return state;
+			return state;
 	}
 };
-export const ThemeContext = createContext<ThemeContext>(undefined);
+export const ThemeContext = createContext<ThemeContextType>(undefined);
 export const useCustomContext = () => {
 	const context = useContext(ThemeContext);
 	if(!context) {
@@ -31,7 +43,12 @@ export const useCustomContext = () => {
 }
 
 export default function ThemeContextProvider({children}: ProviderProps) {
-	const [state, dispatch] = useReducer(reducer, { theme: 'theme-light', highlighterTheme: '' });
+	const initialState: State = { 
+		theme: 'theme-light',
+		highlighterTheme: '',
+		columns: 3
+	}
+	const [state, dispatch] = useReducer(reducer, initialState);
 	
 	return (
 		<ThemeContext.Provider value={{ state, dispatch }}>

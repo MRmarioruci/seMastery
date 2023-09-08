@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 import { useCustomContext } from "../contexts/theme-context"
 
 type Option = {key: string, value: string};
@@ -20,16 +20,16 @@ function HighlighterThemeSelector() {
             { key: 'Oceanic Next', value: 'oceanicNext'}
         ]
     }, [])
-    const setOption = (newOption: string) => {
+    const setOption = useCallback((newOption: string) => {
         dispatch({type: 'SET_HIGHLIGHT_THEME', payload: newOption})
         localStorage.setItem('highlightertheme', newOption)
-    }
+    }, [dispatch])
     useEffect(() => {
         const existingTheme = localStorage.getItem('highlightertheme');
         setOption(existingTheme ? existingTheme : 'vsDark')
-    }, [])
+    }, [setOption])
     return (
-        <select onChange={e => {setOption(e.target.value)}}>
+        <select onChange={e => {setOption(e.target.value)}} style={{height: '38px', marginTop: '4px'}}>
             { options.map((option: Option) => {
                 return (
                     <option key={option.key} value={option.value}>{option.key}</option>

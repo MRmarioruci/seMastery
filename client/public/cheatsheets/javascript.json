@@ -107,7 +107,7 @@
 			]
 		},
 		{
-			"title": "Promises and Asynchronous Programming",
+			"title": "Promises/Async",
 			"docs": [
 				{
 					"title": "What is a Promise in JavaScript?",
@@ -178,6 +178,26 @@
 					"title": "Explain the concept of 'Promise.race()' and provide a use case for it.",
 					"description": "`Promise.race()` resolves or rejects as soon as any of the Promises in the array settles. It's useful for implementing timeout logic. For example, you can use it to set a maximum execution time for an asynchronous operation.",
 					"code": "Promise.race([myPromise, timeoutPromise]).then((result) => {\n  // Handle result (myPromise resolved within timeout)\n}).catch((error) => {\n  // Handle error (myPromise took too long)\n});"
+				},
+				{
+					"title": "Promise.allSettled()",
+					"description": "This method is similar to Promise.all, but it doesn't short-circuit if one of the promises rejects. It waits for all promises to settle (either resolve or reject) and returns an array of objects describing the outcome of each promise.",
+					"code": "const promises = [promise1, promise2, promise3];\nPromise.allSettled(promises).then(results => {\n  // Handle the results\n});"
+				},
+				{
+					"title": "Promise.race()",
+					"description": "This method returns a new promise that settles as soon as one of the input promises settles, either by resolving or rejecting. It can be useful when you want to get a result as quickly as possible from multiple promises.",
+					"code": "const promises = [promise1, promise2, promise3];\nPromise.race(promises).then(result => {\n  // Handle the first settled promise\n});"
+				},
+				{
+					"title": "Promise.any()",
+					"description": "Introduced in ES2021, Promise.any resolves as soon as any of the input promises resolves. It's similar to Promise.race, but it doesn't reject if all promises reject.",
+					"code": "const promises = [promise1, promise2, promise3];\nPromise.any(promises).then(result => {\n  // Handle the first resolved promise\n});"
+				},
+				{
+					"title": "for...of Loop",
+					"description": "You can also use a for...of loop to iterate through an array of promises and await each one in turn",
+					"code": "async function iterateAndAwait(promises) {\n  for (const promise of promises) {\n    const result = await promise;\n    // Handle each result\n  }\n}"
 				}
 			]
 		},
@@ -250,6 +270,112 @@
 					"code": "const array = [5, 10, 15, 20, 25];\n\nconst isMultipleOf5 = array.every(function(element) {\n    return element % 5 === 0;\n});\n\n// 'isMultipleOf5' is true because all elements are multiples of 5."
 				}
 			]
+		},
+		{
+			"title": "String Methods",
+			"docs": [
+				{
+					"title": "length",
+					"description": "Returns the length of a string.",
+					"code": "const text = 'Hello, World!';\nconst length = text.length;\n// Result: length is 13"
+				},
+				{
+					"title": "charAt(index)",
+					"description": "Returns the character at the specified index in a string.",
+					"code": "const text = 'JavaScript';\nconst char = text.charAt(2);\n// Result: char is 'v'"
+				},
+				{
+					"title": "concat(string1, string2, ...)",
+					"description": "Combines two or more strings and returns a new string.",
+					"code": "const str1 = 'Hello';\nconst str2 = 'World';\nconst result = str1.concat(', ', str2);\n// Result: result is 'Hello, World'"
+				},
+				{
+					"title": "toUpperCase()",
+					"description": "Converts a string to uppercase.",
+					"code": "const text = 'Hello, World!';\nconst upperCase = text.toUpperCase();\n// Result: upperCase is 'HELLO, WORLD!'"
+				},
+				{
+					"title": "toLowerCase()",
+					"description": "Converts a string to lowercase.",
+					"code": "const text = 'Hello, World!';\nconst lowerCase = text.toLowerCase();\n// Result: lowerCase is 'hello, world!'"
+				},
+				{
+					"title": "indexOf(substring)",
+					"description": "Returns the index of the first occurrence of a substring in a string.",
+					"code": "const text = 'Hello, World!';\nconst firstIndex = text.indexOf('o');\n// Result: firstIndex is 4"
+				},
+				{
+					"title": "lastIndexOf(substring)",
+					"description": "Returns the index of the last occurrence of a substring in a string.",
+					"code": "const text = 'Hello, World!';\nconst lastIndex = text.lastIndexOf('o');\n// Result: lastIndex is 8"
+				},
+				{
+					"title": "replace(searchValue, replaceValue)",
+					"description": "Replaces a specified substring with another substring in a string.",
+					"code": "const text = 'Hello, World!';\nconst newText = text.replace('World', 'Universe');\n// Result: newText is 'Hello, Universe!'"
+				},
+				{
+					"title": "split(separator)",
+					"description": "Splits a string into an array of substrings based on a specified separator.",
+					"code": "const text = 'apple,banana,cherry';\nconst fruits = text.split(',');\n// Result: fruits is ['apple', 'banana', 'cherry']"
+				},
+				{
+					"title": "trim()",
+					"description": "Removes whitespace characters from the beginning and end of a string.",
+					"code": "const text = '  Hello, World!  ';\nconst trimmedText = text.trim();\n// Result: trimmedText is 'Hello, World!'"
+				}
+			]
+		},
+		{
+			"title": "Object Methods",
+			"docs": [
+				{
+					"title": "Object.keys(obj)",
+					"description": "Returns an array of a given object's own enumerable property names.",
+					"code": "const person = { name: 'John', age: 30, job: 'Engineer' };\nconst keys = Object.keys(person);\n// Result: keys is ['name', 'age', 'job']"
+				},
+				{
+					"title": "Object.values(obj)",
+					"description": "Returns an array of a given object's own enumerable property values.",
+					"code": "const person = { name: 'John', age: 30, job: 'Engineer' };\nconst values = Object.values(person);\n// Result: values is ['John', 30, 'Engineer']"
+				},
+				{
+					"title": "Object.entries(obj)",
+					"description": "Returns an array of a given object's own enumerable property [key, value] pairs.",
+					"code": "const person = { name: 'John', age: 30, job: 'Engineer' };\nconst entries = Object.entries(person);\n// Result: entries is [['name', 'John'], ['age', 30], ['job', 'Engineer']]"
+				},
+				{
+					"title": "Object.assign(target, source1, source2, ...)",
+					"description": "Copies the values of all enumerable own properties from one or more source objects to a target object.",
+					"code": "const target = {};\nconst source1 = { name: 'John' };\nconst source2 = { age: 30 };\nObject.assign(target, source1, source2);\n// Result: target is { name: 'John', age: 30 }"
+				},
+				{
+					"title": "Object.keys(obj).forEach(key => ...)",
+					"description": "Iterates through the keys of an object and performs an action for each key.",
+					"code": "const person = { name: 'John', age: 30, job: 'Engineer' };\nObject.keys(person).forEach(key => {\n  console.log(key, person[key]);\n});\n// Result: Prints 'name John', 'age 30', 'job Engineer'"
+				},
+				{
+					"title": "Object.freeze(obj)",
+					"description": "Freezes an object, preventing new properties from being added or existing properties from being modified or removed.",
+					"code": "const person = { name: 'John' };\nObject.freeze(person);\nperson.age = 30; // This operation has no effect\n// 'person' remains { name: 'John' }"
+				},
+				{
+					"title": "Object.seal(obj)",
+					"description": "Seals an object, preventing new properties from being added and making existing properties non-configurable.",
+					"code": "const person = { name: 'John' };\nObject.seal(person);\ndelete person.name; // This operation has no effect\n// 'person' remains { name: 'John' }"
+				},
+				{
+					"title": "Object.getOwnPropertyNames(obj)",
+					"description": "Returns an array of all properties (enumerable or not) found directly upon a given object.",
+					"code": "const person = { name: 'John' };\nconst propertyNames = Object.getOwnPropertyNames(person);\n// Result: propertyNames is ['name']"
+				},
+				{
+					"title": "Object.getOwnPropertyDescriptor(obj, prop)",
+					"description": "Returns a property descriptor for a named property on an object (if it exists).",
+					"code": "const person = { name: 'John' };\nconst descriptor = Object.getOwnPropertyDescriptor(person, 'name');\n// Result: descriptor is { value: 'John', writable: true, enumerable: true, configurable: true }"
+				}
+			]
 		}
+		
 	]
 }

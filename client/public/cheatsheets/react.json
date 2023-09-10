@@ -255,6 +255,32 @@
 					"description": ""
 				}
 			]
+		},
+		{
+			"title":"Custom Hooks",
+			"docs":[
+				{
+					"title":"useLocalStorage",
+					"description":"Easily store and retrieve data from local storage.",
+					"code":"import { useState } from 'react';\n\nfunction useLocalStorage(key, initialValue) {\n  const [value, setValue] = useState(() => {\n    const storedValue = localStorage.getItem(key);\n    return storedValue ? JSON.parse(storedValue) : initialValue;\n  });\n\n  const setStoredValue = (newValue) => {\n    setValue(newValue);\n    localStorage.setItem(key, JSON.stringify(newValue));\n  };\n\n  return [value, setStoredValue];\n}\n\n// Usage:\n// const [name, setName] = useLocalStorage('name', 'John');\n"
+				},
+				{
+					"title":"useMediaQuery",
+					"description":"Detect & add to viewport size changes",
+					"code":"import { useState, useEffect } from 'react';\n\nfunction useMediaQuery(query) {\n  const [matches, setMatches] = useState(false);\n\n  useEffect(() => {\n    const mediaQuery = window.matchMedia(query);\n    setMatches(mediaQuery.matches);\n\n    const handler = (e) => setMatches(e.matches);\n    mediaQuery.addEventListener('change', handler);\n\n    return () => {\n      mediaQuery.removeEventListener('change', handler);\n    };\n  }, [query]);\n\n  return matches;\n}\n\n// Usage:\n// const isMobile = useMediaQuery('(max-width: 768px)');\n"
+				},
+				{
+					"title":"useDebounce",
+					"description":"Debounce user inputs or anything that triggers more than once and needs throttling. Useful on search inputs.",
+					"code":"import { useState, useEffect } from 'react';\n\nfunction useDebounce(value, delay) {\n  const [debouncedValue, setDebouncedValue] = useState(value);\n\n  useEffect(() => {\n    const handler = setTimeout(() => {\n      setDebouncedValue(value);\n    }, delay);\n\n    return () => {\n      clearTimeout(handler);\n    };\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n\n// Usage:\n// const debouncedSearchTerm = useDebounce(searchTerm, 300);\n"
+				},
+				{
+					"title":"useFetch",
+					"description":"Simplify & standardize fetching data from an external API.",
+					"code":"import { useState, useEffect } from 'react';\n\nfunction useFetch(url) {\n  const [data, setData] = useState(null);\n  const [isLoading, setIsLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    async function fetchData() {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) {\n          throw new Error('Network response was not ok');\n        }\n        const json = await response.json();\n        setData(json);\n      } catch (err) {\n        setError(err);\n      } finally {\n        setIsLoading(false);\n      }\n    }\n\n    fetchData();\n  }, [url]);\n\n  return { data, isLoading, error };\n}\n\n// Usage:\n// const { data, isLoading, error } = useFetch('https://api.example.com/data');\n"
+				}
+			]
 		}
+		
 	]
 }

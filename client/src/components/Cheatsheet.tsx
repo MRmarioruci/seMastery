@@ -57,7 +57,7 @@ function CheatsheetComponent() {
 	useEffect(() => {
 		if(!id) return;
 		
-		const c = menu.find( item => item.href === id);
+		const c = menu.interview.find( item => item.href === id);
 		if(!c) throw new Error(`Could not find the requested ${id} menu item`);
 
 		setCheatsheet(c);

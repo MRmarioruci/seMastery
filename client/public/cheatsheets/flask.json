@@ -99,6 +99,36 @@
                     "code": "from flask import url_for\n\nurl = url_for('home')\n"
                 }
             ]
+        },
+        {
+            "title": "Blueprints",
+            "docs": [
+                {
+                    "title": "Defining Routes",
+                    "description": "You use decorators provided by Flask, such as @app.route(), to define routes in your application. These decorators specify which URL pattern should trigger a particular Python function",
+                    "code": "from flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return 'Hello, World!'\n\n@app.route('/about')\ndef about():\n    return 'About page'\n\n@app.route('/contact')\ndef contact():\n    return 'Contact us'\n"
+                }
+            ]
+        },
+        {
+            "title": "Flask-SQLAlchemy",
+            "docs": [
+                {
+                    "title": "Defining Routes",
+                    "description": "You use decorators provided by Flask, such as @app.route(), to define routes in your application. These decorators specify which URL pattern should trigger a particular Python function",
+                    "code": "from flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return 'Hello, World!'\n\n@app.route('/about')\ndef about():\n    return 'About page'\n\n@app.route('/contact')\ndef contact():\n    return 'Contact us'\n"
+                }
+            ]
+        },
+        {
+            "title": "Flask Async",
+            "docs": [
+                {
+                    "title": "Defining Routes",
+                    "description": "You use decorators provided by Flask, such as @app.route(), to define routes in your application. These decorators specify which URL pattern should trigger a particular Python function",
+                    "code": "from flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return 'Hello, World!'\n\n@app.route('/about')\ndef about():\n    return 'About page'\n\n@app.route('/contact')\ndef contact():\n    return 'Contact us'\n"
+                }
+            ]
         }
     ]
 }

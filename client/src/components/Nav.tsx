@@ -1,5 +1,5 @@
 import {useEffect, useMemo} from 'react'
-import logo from '../logo.png';
+import logo from '../images/logo.png';
 import { useCustomContext, ThemeType } from '../contexts/theme-context';
 
 function Nav() {
@@ -23,14 +23,10 @@ function Nav() {
 	return (
 		<nav className="nav">
 			<div className="nav__inner">
-				<a className="flex flex__row justify__center" href="/">
-					<img src={logo} width="50" alt="logo" />
-					<div className="text__bold font__30 mtop--10 logo__text">
-						<b className="text__primary">SE</b>
-						<span className="text__normal">Mastery</span>
-					</div>
+				<a className="flex flex__row justify__center logo" href="/">
+					<img src={logo} height="60" alt="logo" />
 				</a>
-				<div className="float--right flex flex__row justify__center">
+				<div className="float--right flex flex__row">
 					{/* <div className="btn btn__primary-soft btn__md">
 						Login	
 					</div>
@@ -48,6 +44,13 @@ function Nav() {
 								light_mode
 							</span>
 						}
+					</div>
+					<div className="btn btn__inverted btn__md mtop--10" style={{height: '38px'}}>
+						<span className="material-icons">
+							dashboard
+						</span>
+						&nbsp;
+						My Board
 					</div>
 				</div>
 			</div>

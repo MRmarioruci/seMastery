@@ -1,82 +1,96 @@
-export const menu = [
-	{
-		title: 'Javascript',
-		href: 'javascript',
-		icon: '',
-	},
-	{
-		title: 'React.js',
-		href: 'react',
-		icon: '',
-	},
-	{
-		title: 'Flask',
-		href: 'flask',
-		icon: '',
-	},
-	{
-		title: 'APIs',
-		href: 'apis',
-		icon: '',
-	},
-	{
-		title: 'Typescript',
-		href: 'typescript',
-		icon: '',
-	},
-	{
-		title: 'Next.js',
-		href: 'next',
-		icon: '',
-	},
-	{
-		title: 'Python',
-		href: 'python',
-		icon: '',
-	},
-	{
-		title: 'Node.js',
-		href: 'node',
-		icon: '',
-	},
-	{
-		title: 'PHP',
-		href: 'php',
-		icon: '',
-	},
-	{
-		title: 'Docker',
-		href: 'docker',
-		icon: '',
-	},
-	{
-		title: 'Css',
-		href: 'css',
-		icon: '',
-	},
-	{
-		title: 'Sass(Scss)',
-		href: 'sass',
-		icon: '',
-	},
-	{
-		title: 'Angular',
-		href: 'angular',
-		icon: '',
-	},
-	{
-		title: 'HTML',
-		href: 'html',
-		icon: '',
-	},
-	{
-		title: 'Security',
-		href: 'security',
-		icon: '',
-	},
-	{
-		title: 'Jest',
-		href: 'jest',
-		icon: '',
-	},
-]
+export const menu = {
+	"interview": [
+		{
+			title: 'Javascript',
+			href: 'javascript',
+			icon: '',
+		},
+		{
+			title: 'React.js',
+			href: 'react',
+			icon: '',
+		},
+		{
+			title: 'Flask',
+			href: 'flask',
+			icon: '',
+		},
+		{
+			title: 'APIs',
+			href: 'apis',
+			icon: '',
+		},
+		{
+			title: 'Typescript',
+			href: 'typescript',
+			icon: '',
+		},
+		{
+			title: 'Next.js',
+			href: 'next',
+			icon: '',
+		},
+		{
+			title: 'Python',
+			href: 'python',
+			icon: '',
+		},
+		{
+			title: 'Node.js',
+			href: 'node',
+			icon: '',
+		},
+		{
+			title: 'PHP',
+			href: 'php',
+			icon: '',
+		},
+		{
+			title: 'Docker',
+			href: 'docker',
+			icon: '',
+		},
+		{
+			title: 'Css',
+			href: 'css',
+			icon: '',
+		},
+		{
+			title: 'Sass(Scss)',
+			href: 'sass',
+			icon: '',
+		},
+		{
+			title: 'Angular',
+			href: 'angular',
+			icon: '',
+		},
+		{
+			title: 'HTML',
+			href: 'html',
+			icon: '',
+		},
+		{
+			title: 'Security',
+			href: 'security',
+			icon: '',
+		},
+		{
+			title: 'Jest',
+			href: 'jest',
+			icon: '',
+		},
+	],
+	"projects": [
+		{
+			title: 'Web Frontend Master',
+			href: 'frontend',
+			icon: '',
+		},
+		{
+			title: 'Web Backend Master',
+			href: 'backend',
+			icon: '',
+		},
+	]
+}

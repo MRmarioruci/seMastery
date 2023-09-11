@@ -1,18 +1,14 @@
 import React from 'react'
 import '../scss/pages/Footer.scss';
-import logo from '../logo.png';
+import logo from '../images/logo.png';
 
 function Footer() {
 	return (
 		<div className="footer">
 			<div className='footer__inner text__center'>
 				<div className="text__center flex flex__column align--center">
-					<a className="flex flex__row justify__center align--center logo__grayscale" href="/">
-						<img alt="logo" src={logo} width="35" />
-						<div className="text__bold font__25 mtop--10 logo__text">
-							<b className="text__primary">SE</b>
-							<span className="text__normal">Mastery</span>
-						</div>
+					<a className="flex flex__row justify__center logo" href="/">
+						<img src={logo} height="60" alt="logo" />
 					</a>
 				</div>
 				<a href="https://marioruci.com" target='_blank' rel="noreferrer">

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https: //fonts.googleapis.com/icon?family=Material+Icons+Outlined');
-@import url('https://fonts.googleapis.com/css2?family=Pangolin&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Poppins&display=swap');
 @import "partials/vars";
 @import "partials/buttons";
 @import "partials/forms";
@@ -107,10 +107,11 @@ a {
 				border: none;
 				flex-basis: 32%;
 				margin: 4px;
-				box-shadow: 0 2px 6px 0 RGBA(var(--textColor-rgb) / 10%);
+				//box-shadow: 0 2px 6px 0 RGBA(var(--textColor-rgb) / 10%);
 				cursor: pointer;
-				border: 1px solid RGBA(var(--textColor-rgb) / 10%);
+				border: 1px solid RGBA(var(--textColor-rgb) / 5%);
 				color: var(--textColor);
+				background-color: var(--secondary);
 
 				&:hover{
 					background: var(--success);
@@ -122,7 +123,8 @@ a {
 	}
 }
 .logo__text{
-	font-family: Pangolin;
+	font-family: Monoton;
+	color: var(--textColor);
 }
 .nav{
 	position: fixed;
@@ -143,6 +145,17 @@ a {
 }
 .logo__grayscale{
 	-webkit-filter: grayscale(.6);
+}
+[data-theme="theme-dark"]{
+	.logo{
+		filter: invert(100%);
+	}
+	.main__header-rightLottie{
+		filter: invert(100%);
+	}
+	.newsletter__animation{
+		filter: invert(90%);
+	}
 }
 .contact__email{
 	border-radius: 25px !important;

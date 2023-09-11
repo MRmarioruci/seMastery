@@ -37,7 +37,7 @@ function Main() {
 						Interview specific cheatsheets. Concepts and general interview material to brush up before the big day.	
 					</div>
 					<div className="main__contents-menu">
-						{menu.map((item, index) => {
+						{menu.interview.map((item, index) => {
 							return (
 								<a href={`/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
 									<b className="text__primary font__10">{'/'}</b> {item.title}
@@ -46,12 +46,35 @@ function Main() {
 						})}
 					</div>
 					<div className="text__center">
-						<button className="btn btn__secondary text__normal btn__rounded">
+						{/* <button className="btn btn__secondary text__normal btn__rounded">
 							<span className="material-icons">
 								add
 							</span>
 							Suggest an addition
-						</button>
+						</button> */}
+					</div>
+				</div>
+				<div className="main__contents">
+					<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Project Based Learning</div>
+					<div className="text__center text__muted">
+						From zero to hero. Learning new technologies is a must in our profession. The only good way to learn them is by doing. Start from level 1 to the last level and then you can call yourself a pro.
+					</div>
+					<div className="main__contents-menu">
+						{menu.projects.map((item, index) => {
+							return (
+								<a href={`/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
+									<b className="text__primary font__10">{'/'}</b> {item.title}
+								</a>
+							)
+						})}
+					</div>
+					<div className="text__center">
+						{/* <button className="btn btn__secondary text__normal btn__rounded">
+							<span className="material-icons">
+								add
+							</span>
+							Suggest an addition
+						</button> */}
 					</div>
 				</div>
 				{/* <div className="main__contents">
@@ -84,6 +107,7 @@ function Main() {
 							animationData={contactAnimation}
 							play
 							style={{ width: '350px', height: '350px', margin: 'auto' }}
+							className='newsletter__animation'
 						/>
 						<h4>Join our newsletter</h4>
 						<div>Be the first to know about our latest material.</div>

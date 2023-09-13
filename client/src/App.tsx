@@ -4,6 +4,7 @@ import 'animate.css';
 import Main from './components/Main';
 import Nav from './components/Nav';
 import Cheatsheet from "./components/Cheatsheet";
+import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import Community from "./components/Community";
 import ThemeContextProvider from './contexts/theme-context';
@@ -16,6 +17,7 @@ function App() {
 				<Routes>
 					<Route index element={<Main />} />
 					<Route path="/:id" element={<Cheatsheet />} />
+					<Route path="/projects/:id" element={<Projects />} />
 				</Routes>
 			</BrowserRouter>
 			<Community />

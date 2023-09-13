@@ -1,3 +1,5 @@
+/* Cheatsheets */
+
 export type Cheatsheet = {
     "title"?: string,
     "description"?: any,
@@ -32,4 +34,37 @@ export interface CheatsheetModalItemProps {
     highlighter: Highlighter,
     highlighterTheme: string,
 	toggleCheatsheet: ToggleCheatsheetFunction
+}
+
+
+
+/* Projects */
+export type ProjectType = {
+    title: string,
+    description: string,
+    technologies: string,
+    concepts: string,
+    instructions: string,
+}
+export type ProjectGroupType = {
+    "title": string,
+    "docs": ProjectType[]
+}
+export type ProjectDocType = {
+    "collectionName": string,
+	"title": string,
+	"icon": string,
+    "color"?: string,
+	"groups": ProjectGroupType[],
+    "highlighter": Highlighter
+}
+export type ToggleProjectFunction = (project: ProjectType | null) => void;
+export interface ProjectItemPropType {
+	item: ProjectType,
+    index: number,
+	toggleProject: ToggleProjectFunction
+}
+export interface ProjectModalItemProps {
+	item: ProjectType | null,
+	toggleProject: ToggleProjectFunction
 }

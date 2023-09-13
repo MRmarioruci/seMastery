@@ -114,9 +114,34 @@
             "title": "Flask-SQLAlchemy",
             "docs": [
                 {
-                    "title": "Defining Routes",
-                    "description": "You use decorators provided by Flask, such as @app.route(), to define routes in your application. These decorators specify which URL pattern should trigger a particular Python function",
-                    "code": "from flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return 'Hello, World!'\n\n@app.route('/about')\ndef about():\n    return 'About page'\n\n@app.route('/contact')\ndef contact():\n    return 'Contact us'\n"
+                    "title": "Models",
+                    "description": "In Flask-SQLAlchemy, a model refers to a Python class that defines the structure and behavior of a database table. These models are used to interact with the database and represent the data in your application.\nRepresent Database Tables\nDefine Table Schema\nObject-Relational Mapping\nData Validation & Type Casting\nRelationships",
+                    "code": "from flask_sqlalchemy import SQLAlchemy\ndb = SQLAlchemy()\n\n# Define the User model\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)  # Primary key for the User table\n    username = db.Column(db.String(80), unique=True, nullable=False)  # Username column\n    email = db.Column(db.String(120), unique=True, nullable=False)  # Email column\n    bio = db.Column(db.Text)  # Biography column\n    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())  # Timestamp of user creation\n    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())  # Timestamp of last update\n\n# Define the Post model\nclass Post(db.Model):\n    id = db.Column(db.Integer, primary_key=True)  # Primary key for the Post table\n    title = db.Column(db.String(255), nullable=False)  # Title column\n    content = db.Column(db.Text)  # Content column\n    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Foreign key relationship to User\n    author = db.relationship('User', backref='posts')  # Relationship with User model to access author\n    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())  # Timestamp of post creation\n    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())  # Timestamp of last update\n"
+                },
+                {
+                    "title": "Create",
+                    "description": "Basic setup for creating a new object in your database",
+                    "code": "class Item(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)\n\n# Create a new item\n@app.route('/items', methods=['POST'])\ndef create_item():\n    data = request.json\n    if 'name' not in data:\n        return jsonify({'message': 'Name is required'}), 400\n\n    new_item = Item(name=data['name'])\n    db.session.add(new_item)\n    db.session.commit()\n    return jsonify({'message': 'Item created successfully'}), 201\n"
+                },
+                {
+                    "title": "Update",
+                    "description": "Basic setup for updating an object in your database",
+                    "code": "class Item(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)\n\n # Update an item by ID\n@app.route('/items/<int:item_id>', methods=['PUT'])\ndef update_item(item_id):\n    data = request.json\n    item = Item.query.get(item_id)\n    if not item:\n        return jsonify({'message': 'Item not found'}), 404\n\n    if 'name' in data:\n        item.name = data['name']\n\n    db.session.commit()\n    return jsonify({'message': 'Item updated successfully'})\n"
+                },
+                {
+                    "title": "Delete",
+                    "description": "Basic setup for deleting an object in your database",
+                    "code": "class Item(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)\n\n # Delete an item by ID\n@app.route('/items/<int:item_id>', methods=['DELETE'])\ndef delete_item(item_id):\n    item = Item.query.get(item_id)\n    if not item:\n        return jsonify({'message': 'Item not found'}), 404\n\n    db.session.delete(item)\n    db.session.commit()\n    return jsonify({'message': 'Item deleted successfully'})\n"
+                },
+                {
+                    "title": "Get",
+                    "description": "Basic setup for deleting an object in your database",
+                    "code": "class Item(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)\n\n  # Get all items\n@app.route('/items', methods=['GET'])\ndef get_items():\n    items = Item.query.all()\n    item_list = [{'id': item.id, 'name': item.name} for item in items]\n    return jsonify(item_list)\n"
+                },
+                {
+                    "title": "Get",
+                    "description": "Basic setup for deleting an object in your database",
+                    "code": "class Item(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)\n\n  # Get all items\n@app.route('/items', methods=['GET'])\ndef get_items():\n    items = Item.query.all()\n    item_list = [{'id': item.id, 'name': item.name} for item in items]\n    return jsonify(item_list)\n"
                 }
             ]
         },

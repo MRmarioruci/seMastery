@@ -249,7 +249,7 @@ textarea:-ms-input-placeholder {
 	input{
 		display: block;
 		width: 100%;
-		background-color: 0 0;
+		background-color: RGBA(var(--background-rgb) / 20%);
 		color: RGB(var(--textColor-rgb) /  80%);
 		border-color: RGBA(var(--textColor-rgb) / 20%);
 		line-height: 1.2;

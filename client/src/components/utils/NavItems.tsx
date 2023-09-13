@@ -80,16 +80,45 @@ export const menu = {
 			href: 'jest',
 			icon: '',
 		},
+		{
+			title: 'OOP',
+			href: 'oop',
+			icon: '',
+		},
 	],
 	"projects": [
 		{
 			title: 'Web Frontend Master',
-			href: 'frontend',
+			href: 'webFrontend',
 			icon: '',
 		},
 		{
 			title: 'Web Backend Master',
-			href: 'backend',
+			href: 'webBackend',
+			icon: '',
+		},
+	],
+	"mistakes": [
+		{
+			title: 'Javascript',
+			href: 'javascript',
+			icon: '',
+		}
+	],
+	"leetcode": [
+		{
+			title: 'DSA',
+			href: 'dsa',
+			icon: '',
+		},
+		{
+			title: 'Patterns',
+			href: 'leetcodePatterns',
+			icon: '',
+		},
+		{
+			title: 'Problems',
+			href: 'leetcodeProblems',
 			icon: '',
 		},
 	]

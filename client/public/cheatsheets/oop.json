@@ -15,7 +15,7 @@
 				},
 				{
 					"title": "What are the four fundamental OOP principles?",
-					"description": "The four fundamental principles of OOP are:\n\n1. Encapsulation\n2. Inheritance\n3. Polymorphism\n4. Abstraction",
+					"description": "The four fundamental principles of OOP are:<br>1. Encapsulation<br>2. Inheritance<br>3. Polymorphism<br>4. Abstraction",
 					"code": ""
 				},
 				{
@@ -36,7 +36,7 @@
 				{
 					"title": "Encapsulation",
 					"description": "Encapsulation is the principle of bundling data (attributes) and methods (functions) that operate on the data into a single unit called a class. It restricts direct access to some of an object's components and prevents unintended interference and misuse.",
-					"code": "// Example of Encapsulation in JavaScript\n\nclass Employee {\n    constructor(name, id) {\n        // Private variables (encapsulated data)\n        let _name = name;\n        let _id = id;\n\n        // Public methods (getters and setters)\n        this.getName = () => _name;\n        this.getId = () => _id;\n        this.setName = (newName) => {\n            if (typeof newName === 'string') {\n                _name = newName;\n            } else {\n                throw new Error('Name must be a string.');\n            }\n        };\n    }\n}\n\n// Usage\nconst employee = new Employee('John Doe', 12345);\n\nconsole.log('Employee Name:', employee.getName()); // Outputs: Employee Name: John Doe\nconsole.log('Employee ID:', employee.getId()); // Outputs: Employee ID: 12345\n\n// Attempting to directly access encapsulated data (private variables)\nconsole.log('_name:', employee._name); // Outputs: undefined\n\n// Modifying data through setters\nemployee.setName('Jane Smith');\nconsole.log('Updated Employee Name:', employee.getName()); // Outputs: Updated Employee Name: Jane Smith\nemployee.setName(123); // Throws an error: Name must be a string.\n"
+					"code": "// Example of Encapsulation in JavaScript\n\nclass Employee {\n    constructor(name, id) {\n        // Private variables (encapsulated data)\n        let _name = name;\n        let _id = id;\n\n        // Public methods (getters and setters)\n        this.getName = () => _name;\n        this.getId = () => _id;\n        this.setName = (newName) => {\n            if (typeof newName === 'string') {\n                _name = newName;\n            } else {\n                throw new Error('Name must be a string.');\n            }\n        };\n    }\n}\n\n// Usage\nconst employee = new Employee('John Doe', 12345);\n\n// Outputs: Employee Name: John Doeconsole.log('Employee Name:', employee.getName()); \n// Outputs: Employee ID: 12345\nconsole.log('Employee ID:', employee.getId()); \n\n// Attempting to directly access encapsulated data (private variables)\n// Outputs: undefined\nconsole.log('_name:', employee._name); \n\n// Modifying data through setters\nemployee.setName('Jane Smith');\nconsole.log('Updated Employee Name:', employee.getName()); // Outputs: Updated Employee Name: Jane Smith\nemployee.setName(123); // Throws an error: Name must be a string.\n"
 				},
 				{
 					"title": "Inheritance",

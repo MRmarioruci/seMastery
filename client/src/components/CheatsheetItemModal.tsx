@@ -19,7 +19,7 @@ function CheatsheetItemModal(props: CheatsheetModalItemProps) {
 			cropHeigth: myRef.current.offsetHeight * 2
 		};
 		
-		html2canvas(myRef.current, { scale: 2 }).then(canvas => {
+		html2canvas(myRef.current, { scale: 2, backgroundColor: 'transparent' }).then(canvas => {
 			let croppedCanvas = document.createElement("canvas");
 			let croppedCanvasContext = croppedCanvas.getContext("2d");
 			

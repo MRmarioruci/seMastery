@@ -63,6 +63,11 @@
                     "description": "SOLID is an acronym that represents a set of five design principles for writing maintainable and scalable software. The SOLID principles are:\n\n<br>1. Single Responsibility Principle (SRP)\n<br>2. Open-Closed Principle (OCP)\n<br>3. Liskov Substitution Principle (LSP)\n<br>4. Interface Segregation Principle (ISP)\n<br>5. Dependency Inversion Principle (DIP)",
                     "code": ""
                 },
+				{
+                    "title": "What does it achieve?",
+					"description": "Writing solid code, often associated with the SOLID principles of object-oriented design, helps you achieve several important goals in software development: Maintainability, Readability, Scalability, Reusability, Testability, Reduced Technical Debt, Collaboration, Adaptability, Performance, and User Satisfaction.",
+                    "code": ""
+                },
                 {
                     "title": "Single Responsibility Principle (SRP).",
                     "description": "The Single Responsibility Principle (SRP) states that a class should have only one reason to change, or in other words, it should have only one responsibility or job. This principle encourages the separation of concerns, where each class or module focuses on a specific aspect of the system. By adhering to SRP, code becomes more maintainable, reusable, and easier to understand.",

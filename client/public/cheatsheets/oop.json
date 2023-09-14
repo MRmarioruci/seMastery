@@ -60,31 +60,31 @@
             "docs": [
                 {
                     "title": "What are the SOLID principles?",
-                    "description": "SOLID is an acronym that represents a set of five design principles for writing maintainable and scalable software. The SOLID principles are:\n\n1. Single Responsibility Principle (SRP)\n2. Open-Closed Principle (OCP)\n3. Liskov Substitution Principle (LSP)\n4. Interface Segregation Principle (ISP)\n5. Dependency Inversion Principle (DIP)",
+                    "description": "SOLID is an acronym that represents a set of five design principles for writing maintainable and scalable software. The SOLID principles are:\n\n<br>1. Single Responsibility Principle (SRP)\n<br>2. Open-Closed Principle (OCP)\n<br>3. Liskov Substitution Principle (LSP)\n<br>4. Interface Segregation Principle (ISP)\n<br>5. Dependency Inversion Principle (DIP)",
                     "code": ""
                 },
                 {
-                    "title": "Explain the Single Responsibility Principle (SRP).",
+                    "title": "Single Responsibility Principle (SRP).",
                     "description": "The Single Responsibility Principle (SRP) states that a class should have only one reason to change, or in other words, it should have only one responsibility or job. This principle encourages the separation of concerns, where each class or module focuses on a specific aspect of the system. By adhering to SRP, code becomes more maintainable, reusable, and easier to understand.",
                     "code": "// Example of SRP in JavaScript\n\nclass Employee {\n    constructor(name, id) {\n        this.name = name;\n        this.id = id;\n    }\n}\n\nclass SalaryCalculator {\n    calculateSalary(employee) {\n        // Calculate employee's salary here\n    }\n}\n\nclass ReportGenerator {\n    generateReport(employee) {\n        // Generate employee's report here\n    }\n}"
                 },
                 {
-                    "title": "How does the Open-Closed Principle (OCP) work?",
+                    "title": "Open-Closed Principle (OCP).",
                     "description": "The Open-Closed Principle (OCP) suggests that software entities (classes, modules, functions) should be open for extension but closed for modification. This means that you should be able to add new functionality or behavior to a system without changing the existing code. You achieve this by using techniques like inheritance, interfaces, and abstraction to allow for extension through the creation of new classes or modules.",
                     "code": "// Abstract Shape class that defines a common interface\n\nclass Shape {\n    constructor() {}\n\n    // A method to calculate the area (to be implemented by concrete shapes)\n    calculateArea() {}\n}\n\nclass Circle extends Shape {\n    constructor(radius) {\n        super();\n        this.radius = radius;\n    }\n\n    // Implement the calculateArea method for circles\n    calculateArea() {\n        return Math.PI * this.radius * this.radius;\n    }\n}\n\nclass Square extends Shape {\n    constructor(sideLength) {\n        super();\n        this.sideLength = sideLength;\n    }\n\n    // Implement the calculateArea method for squares\n    calculateArea() {\n        return this.sideLength * this.sideLength;\n    }\n}\n\n// Function that calculates the total area of an array of shapes without modifying existing code\nfunction calculateTotalArea(shapes) {\n    let totalArea = 0;\n\n    for (const shape of shapes) {\n        totalArea += shape.calculateArea();\n    }\n\n    return totalArea;\n}\n\n// Usage example\nconst shapes = [new Circle(5), new Square(4)];\nconst totalArea = calculateTotalArea(shapes);\nconsole.log(`Total area of shapes: ${totalArea}`);"
                 },
                 {
-                    "title": "What is the Liskov Substitution Principle (LSP)?",
+                    "title": "Liskov Substitution Principle (LSP).",
                     "description": "The Liskov Substitution Principle (LSP) states that subtypes (derived classes) must be substitutable for their base types (superclasses) without altering the correctness of the program. In other words, if a program works with objects of a base class, it should also work with objects of any derived class without causing unexpected behavior or violating the expected behavior of the base class.",
                     "code": "// Example of LSP in JavaScript\n\nclass Bird {\n    fly() {\n        // Common flying behavior for all birds\n    }\n}\n\nclass Sparrow extends Bird {\n    fly() {\n        // Flying behavior specific to sparrows\n    }\n}\n\nclass Ostrich extends Bird {\n    fly() {\n        // Ostriches cannot fly, so we raise an exception\n        throw new Error('Ostriches cannot fly');\n    }\n}"
                 },
                 {
-                    "title": "Explain the Interface Segregation Principle (ISP).",
+                    "title": "Interface Segregation Principle (ISP).",
                     "description": "The Interface Segregation Principle (ISP) suggests that clients (classes or modules) should not be forced to depend on interfaces they do not use. It encourages the creation of smaller, more specific interfaces tailored to the needs of clients. By following ISP, you prevent clients from being burdened with unnecessary methods or dependencies.",
                     "code": "// Example of ISP in JavaScript\n\nclass Worker {\n    work() {\n        // Common work behavior\n    }\n}\n\nclass Eater {\n    eat() {\n        // Common eating behavior\n    }\n}\n\nclass SuperWorker extends Worker, Eater {\n    work() {\n        // SuperWorker combines work and eat behaviors\n    }\n}\n\nclass MinimalWorker extends Worker {\n    work() {\n        // MinimalWorker only has work behavior\n    }\n}"
                 },
                 {
-                    "title": "What does the Dependency Inversion Principle (DIP) entail?",
+                    "title": "Dependency Inversion Principle (DIP).",
                     "description": "The Dependency Inversion Principle (DIP) states that high-level modules should not depend on low-level modules; both should depend on abstractions. Furthermore, abstractions should not depend on details; details should depend on abstractions. DIP promotes decoupling and the use of interfaces or abstract classes to define dependencies, making the system more flexible and easier to change.",
                     "code": "// Example of DIP in JavaScript\n\nclass LightBulb {\n    turnOn() {\n        // Code to turn on the light bulb\n    }\n}\n\nclass Fan {\n    start() {\n        // Code to start the fan\n    }\n}\n\nclass SwitchableDevice {\n    operate() {\n        // Common interface for switchable devices\n    }\n}\n\nclass SmartSwitch {\n    constructor(device) {\n        this.device = device;\n    }\n\n    operateDevice() {\n        // Operate any switchable device\n        this.device.operate();\n    }\n}"
                 }

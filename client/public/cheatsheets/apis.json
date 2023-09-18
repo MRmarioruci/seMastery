@@ -99,6 +99,61 @@
                     "code": ""
                 }
             ]
+        },
+        {
+            "title": "Websockets",
+            "docs": [
+                {
+                    "title": "What is it?",
+                    "description": "Websockets are a communication protocol that enables real-time, two-way communication between a client (like a web browser) and a server over a single, long-lived connection. They are often used in web applications where real-time updates, interactive features, or instant messaging are required.",
+                    "code": ""
+                },
+                {
+                    "title": "Handshake",
+                    "description": "The process starts with an initial HTTP handshake between the client and the server, just like when you request a web page. This handshake is used to establish the WebSocket connection. The client sends a WebSocket handshake request, and if the server supports WebSockets, it responds with a WebSocket handshake response, upgrading the connection from HTTP to WebSocket.",
+                    "code": ""
+                },
+                {
+                    "title": "Persistent Connection",
+                    "description": "Unlike traditional HTTP, which is stateless and involves opening a new connection for each request, WebSockets maintain a persistent connection. This means that once the connection is established, both the client and server can send data to each other at any time without the overhead of repeatedly establishing new connections.",
+                    "code": ""
+                },
+                {
+                    "title": "Bi-Directional Communication",
+                    "description": "WebSockets allow both the client and the server to send data to each other whenever they want. This is different from HTTP, where the client initiates requests and the server responds. With WebSockets, data can flow in both directions, enabling real-time updates.",
+                    "code": ""
+                },
+                {
+                    "title": "WebSocket Messages",
+                    "description": "Data sent over a WebSocket connection is encapsulated into messages. Messages can be text or binary data. Each message can be sent as a whole or in smaller chunks for large payloads. The WebSocket protocol ensures that messages are properly framed and delivered reliably.",
+                    "code": ""
+                },
+                {
+                    "title": "Event Driven",
+                    "description": "WebSockets are event-driven. The client and server can define event handlers to process incoming messages or respond to specific events. This makes it easy to create interactive applications that react in real-time to user actions or data changes on the server.",
+                    "code": ""
+                },
+                {
+                    "title": "Closing the connection",
+                    "description": "Either the client or server can initiate the closure of the WebSocket connection when it's no longer needed. This is done through a closing handshake to ensure a graceful termination of the connection.",
+                    "code": ""
+                },
+                {
+                    "title": "Pros",
+                    "description": "Either the client or server can initiate the closure of the WebSocket connection when it's no longer needed. This is done through a closing handshake to ensure a graceful termination of the connection.",
+                    "code": ""
+                },
+                {
+                    "title": "Server Setup Example (Socket.io)",
+                    "description": "We create a basic Express.js web server and an HTTP server.<br>Socket.IO is integrated with the Express server, allowing WebSocket communication.<br>We serve a simple HTML file (index.html) that will be used to interact with the WebSocket.",
+                    "code": "const http = require('http');\nconst express = require('express');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);const io = socketIo(server);\napp.get('/', (req, res) => {\n  res.sendFile(__dirname + '/index.html');\n});\nio.on('connection', (socket) => {\n  console.log('A user connected');\n  socket.on('chat message', (msg) => {\n    console.log(`Message: ${msg}`);\n    io.emit('chat message', msg);\n  });\n  socket.on('disconnect', () => {\n    console.log('A user disconnected');\n  });\n});\nserver.listen(3000, () => {\n  console.log('Server is running on http://localhost:3000');\n});"
+                },
+                {
+                    "title": "Client Setup Example",
+                    "description": "",
+                    "code": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Socket.IO Chat Example</title>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n</head>\n<body>\n  <ul id=\"messages\"></ul>\n  <input id=\"message-input\" autocomplete=\"off\" /><button onclick=\"sendMessage()\">Send</button>\n  <script>\n    // Connect to the WebSocket server\n    const socket = io();\n\n    // Listen for incoming messages\n    socket.on('chat message', (msg) => {\n      const li = document.createElement('li');\n      li.textContent = msg;\n      document.getElementById('messages').appendChild(li);\n    });\n\n    // Function to send a message\n    function sendMessage() {\n      const message = document.getElementById('message-input').value;\n      socket.emit('chat message', message);\n      document.getElementById('message-input').value = '';\n    }\n  </script>\n</body>\n</html>"
+                }
+            ]
         }
     ]
 }

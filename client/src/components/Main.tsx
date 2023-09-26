@@ -3,7 +3,21 @@ import Lottie from 'react-lottie-player'
 import {menu} from './utils/NavItems';
 import contactAnimation from '../animations/contact.json';
 
+type MenuItem = {
+	title: string;
+	href: string;
+	icon: string ;
+}
+type MenuGroup = {
+	title: string;
+	items: MenuItem[];
+}
+
 function Main() {
+	const interviewMenu = menu.find( (menuItem:MenuGroup) => menuItem.title === 'Interview Cheatsheets');
+	const projectsMenu = menu.find( (menuItem:MenuGroup) => menuItem.title === 'Project Based Learning');
+	const juniorMistakesMenu = menu.find( (menuItem:MenuGroup) => menuItem.title === 'Junior Mistakes');
+	const leetcodeMenu = menu.find( (menuItem:MenuGroup) => menuItem.title === 'Leetcode');
 	return (
 		<>
 			<div className="main">
@@ -41,7 +55,7 @@ function Main() {
 						Interview specific cheatsheets. Concepts and general interview material to brush up before the big day.	
 					</div>
 					<div className="main__contents-menu">
-						{menu.interview.map((item, index) => {
+						{interviewMenu?.items.map((item:MenuItem, index) => {
 							return (
 								<a href={`/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
 									<b className="text__primary font__10">{'/'}</b> {item.title}
@@ -64,7 +78,7 @@ function Main() {
 						Mistakes can happen in the code whether you are a junior or senior engineer. Don't worry about it, here is a technology specific list of mistakes that will make you a pro.
 					</div>
 					<div className="main__contents-menu">
-						{menu.mistakes.map((item, index) => {
+						{juniorMistakesMenu?.items.map((item:MenuItem, index) => {
 							return (
 								<a href={`/projects/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
 									<b className="text__primary font__10">{'/'}</b> {item.title}
@@ -79,7 +93,7 @@ function Main() {
 						From zero to hero. Learning new technologies is a must in our profession. The only good way to learn them is by doing. Start from level 1 to the last level and then you can call yourself a pro.
 					</div>
 					<div className="main__contents-menu">
-						{menu.projects.map((item, index) => {
+						{projectsMenu?.items.map((item:MenuItem, index) => {
 							return (
 								<a href={`/projects/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
 									<b className="text__primary font__10">{'/'}</b> {item.title}
@@ -94,7 +108,7 @@ function Main() {
 						From zero to hero. Learning new technologies is a must in our profession. The only good way to learn them is by doing. Start from level 1 to the last level and then you can call yourself a pro.
 					</div>
 					<div className="main__contents-menu">
-						{menu.leetcode.map((item, index) => {
+						{leetcodeMenu?.items.map((item:MenuItem, index) => {
 							return (
 								<a href={`/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
 									<b className="text__primary font__10">{'/'}</b> {item.title}
@@ -109,38 +123,15 @@ function Main() {
 						
 					</div>
 					<div className="main__contents-menu">
-						{menu.leetcode.map((item, index) => {
+						{/* {leetcodeMenu.map((item, index) => {
 							return (
 								<a href={`/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
 									<b className="text__primary font__10">{'/'}</b> {item.title}
 								</a>
 							)
-						})}
+						})} */}
 					</div>
 				</div>
-				{/* <div className="main__contents">
-					<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Syntax Cheatsheets</div>
-					<div className="text__center text__muted">
-						Syntax specific cheatsheets for languages and technologies. Useful for quick reference when coding.
-					</div>
-					<div className="main__contents-menu">
-						{menu.map((item, index) => {
-							return (
-								<a href={`/${item.href}`} className="card main__contents-card" key={`menu__${index}`}>
-									<b className="text__primary font__10">{'/'}</b> {item.title}
-								</a>
-							)
-						})}
-					</div>
-					<div className="text__center">
-						<button className="btn btn__secondary text__normal btn__rounded">
-							<span className="material-icons">
-								add
-							</span>
-							Suggest an addition
-						</button>
-					</div>
-				</div> */}
 				<div className="main__contents">
 					<div className="text__center">
 						<Lottie
@@ -157,34 +148,6 @@ function Main() {
 						</div>
 					</div>
 				</div>
-				{/* <div className="main__contents">
-					<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Resources</div>
-					<div className="main__contents-menu">
-						
-					</div>
-					<div className="text__center">
-						<button className="btn btn__secondary text__normal btn__rounded">
-							<span className="material-icons">
-								add
-							</span>
-							Suggest an addition
-						</button>
-					</div>
-				</div>
-				<div className="main__contents">
-					<div className="btn btn__primary-soft text__normal btn__rounded btn__md main__contents-label">Leetcode</div>
-					<div className="main__contents-menu">
-
-					</div>
-					<div className="text__center">
-						<button className="btn btn__secondary text__normal btn__rounded">
-							<span className="material-icons">
-								add
-							</span>
-							Suggest an addition
-						</button>
-					</div>
-				</div> */}
 			</div>
 		</>
 	)

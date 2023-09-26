@@ -14,6 +14,7 @@ import { hexToRGB } from '../utils/color';
 import HighlighterThemeSelector from './HighlighterThemeSelector';
 import LayoutSelector from './LayoutSelector';
 import { useCustomContext } from '../contexts/theme-context';
+import StaticNavigation from './utils/StaticNavigation';
 
 function CheatsheetComponent() {
 	const { id } = useParams();
@@ -56,8 +57,8 @@ function CheatsheetComponent() {
 	}
 	useEffect(() => {
 		if(!id) return;
-		
-		const c = menu.interview.find( item => item.href === id);
+		const m = menu.find( (menuItem) => menuItem.title === 'Interview Cheatsheets');
+		const c = m?.items.find( item => item.href === id);
 		if(!c) throw new Error(`Could not find the requested ${id} menu item`);
 
 		setCheatsheet(c);
@@ -70,6 +71,7 @@ function CheatsheetComponent() {
 	}, [jsonData, selectedGroup])
 	return (
 		<div className="cheatsheets">
+			<StaticNavigation />
 			{cheatsheet &&
 				<div className={`cheatsheet__${cheatsheet.href}`}>
 					<div className="cheatsheet__inner">

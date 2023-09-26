@@ -54,8 +54,8 @@ function Projects() {
 	}
 	useEffect(() => {
 		if(!id) return;
-		
-		const c = menu.projects.find( item => item.href === id);
+		const m = menu.find( (menuItem) => menuItem.title === 'Project Based Learning');
+		const c = m?.items.find( item => item.href === id);
 		if(!c) throw new Error(`Could not find the requested ${id} menu item`);
 
 		setCheatsheet(c);

@@ -33,6 +33,7 @@
 		box-shadow: 0px 8px 12px RGBA(var(--textColor-rgb) / 4%);
 		padding: 15px;
 		border-radius: 15px;
+		border: 1px dashed RGBA(var(--primary-rgb) / 20%);
 
 		.navigation__menu-item{
 			display: flex;

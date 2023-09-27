@@ -87,6 +87,11 @@ export const menu = [
 				href: 'oop',
 				icon: '',
 			},
+			{
+				title: 'Functional Programming',
+				href: 'fp',
+				icon: '',
+			},
 		]
 	},
 	{
